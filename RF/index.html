@@ -1,27 +1,158 @@
-<!DOCTYPE html>
-<html lang="fr">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roue de la fortune</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roue de la Fortune</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+    canvas {
+      border: 5px solid #333;
+      border-radius: 50%;
+      background: #fff;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    #container {
+      text-align: center;
+      position: relative;
+    }
+    #resultContainer {
+      position: absolute;
+      top: 50%;
+      right: -220px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    #resultLabel {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    #result {
+      width: 200px;
+      height: 30px;
+      font-size: 20px;
+      text-align: left;
+      padding-left: 10px;
+      border: 1px solid #333;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="wheel-container">
-            <div class="wheel" id="wheel">
-                <div class="segment" data-value="0"></div>
-                <div class="segment" data-value="60"></div>
-                <div class="segment" data-value="120"></div>
-                <div class="segment" data-value="180"></div>
-                <div class="segment" data-value="240"></div>
-                <div class="segment" data-value="x2"></div>
-            </div>
-        </div>
-        <button onclick="spinWheel()" id="spinButton">Tourner la roue</button>
-        <div id="result"></div>
+  <div id="container">
+    <canvas id="wheel" width="500" height="500"></canvas>
+    <div id="resultContainer">
+      <label id="resultLabel" for="result">Résultat :</label>
+      <input type="text" id="result" readonly value="-" />
     </div>
+    <button id="spinButton">GO !</button>
+  </div>
+  <script>
+    const canvas = document.getElementById('wheel');
+    const ctx = canvas.getContext('2d');
+    const spinButton = document.getElementById('spinButton');
+    const resultInput = document.getElementById('result');
+    const segments = ['0', '60', '120', '180', '240', 'X2'];
+    const segmentColors = ['#FF5733', '#33FF57', '#3357FF', '#FFFF33', '#FF33FF', '#33FFFF'];
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const radius = 200;
+    let startAngle = 0;
+    let spinAngle = 0;
+    let isSpinning = false;
 
-    <script src="script.js"></script>
+    // Dessiner la roue
+    function drawWheel() {
+      const segmentAngle = (2 * Math.PI) / segments.length;
+      for (let i = 0; i < segments.length; i++) {
+        const start = startAngle + i * segmentAngle;
+        const end = start + segmentAngle;
+
+        // Dessiner un segment
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, start, end);
+        ctx.fillStyle = segmentColors[i];
+        ctx.fill();
+        ctx.stroke();
+
+        // Ajouter le texte
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(start + segmentAngle / 2);
+        ctx.textAlign = 'right';
+        ctx.fillStyle = '#000';
+        ctx.font = '32px Arial';
+        ctx.fillText(segments[i], radius - 10, 10);
+        ctx.restore();
+      }
+
+      // Dessiner la flèche
+      drawArrow();
+    }
+
+    // Dessiner une flèche orientée vers le centre (à droite)
+    function drawArrow() {
+      ctx.beginPath();
+      ctx.moveTo(centerX + radius + 15, centerY);
+      ctx.lineTo(centerX + radius + 25, centerY - 10);
+      ctx.lineTo(centerX + radius + 25, centerY + 10);
+      ctx.closePath();
+      ctx.fillStyle = '#FF0000';
+      ctx.fill();
+    }
+
+    // Tourner la roue
+    function spinWheel() {
+      if (isSpinning) return;
+      isSpinning = true;
+      const spinDuration = 3000; // 3 secondes
+      const targetAngle = Math.random() * (2 * Math.PI) + 5 * 2 * Math.PI; // Rotation aléatoire
+      const start = Date.now();
+
+      function animate() {
+        const elapsed = Date.now() - start;
+        if (elapsed < spinDuration) {
+          spinAngle = (targetAngle * (elapsed / spinDuration)) % (2 * Math.PI);
+          startAngle = spinAngle;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawWheel();
+          requestAnimationFrame(animate);
+        } else {
+          startAngle = targetAngle % (2 * Math.PI);
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          drawWheel();
+          isSpinning = false;
+          const winningIndex = Math.floor(
+            (segments.length - (startAngle / (2 * Math.PI)) * segments.length) % segments.length
+          );
+          const result = segments[winningIndex];
+          resultInput.value = result; // Mettre à jour la zone de texte avec le résultat
+        }
+      }
+
+      animate();
+    }
+
+    // Initialisation
+    drawWheel();
+    spinButton.addEventListener('click', spinWheel);
+  </script>
 </body>
 </html>
