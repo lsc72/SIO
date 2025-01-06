@@ -8,13 +8,15 @@
 </head>
 <body>
     <div class="container">
-        <div class="wheel" id="wheel">
-            <div class="segment">10</div>
-            <div class="segment">20</div>
-            <div class="segment">30</div>
-            <div class="segment">40</div>
-            <div class="segment">50</div>
-            <div class="segment">100</div>
+        <div class="wheel-container">
+            <div class="wheel" id="wheel">
+                <div class="segment" data-value="0"></div>
+                <div class="segment" data-value="60"></div>
+                <div class="segment" data-value="120"></div>
+                <div class="segment" data-value="180"></div>
+                <div class="segment" data-value="240"></div>
+                <div class="segment" data-value="x2"></div>
+            </div>
         </div>
         <button onclick="spinWheel()" id="spinButton">Tourner la roue</button>
         <div id="result"></div>
