@@ -19,30 +19,20 @@
       border-radius: 50%;
       background: #fff;
     }
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+
     #container {
       text-align: center;
       position: relative;
     }
-    #resultContainer {
-      position: absolute;
-      top: 50%;
-      left: 60%;
-      transform: translate(-80%,-60%);
-    }
+
     #spinButton {
       position: absolute;
-      top: 210px;
-      left: 260px;
       width: 100px;
       height: 50px;
-      transform: translate(-80%,-60%);
-      font-size: 25px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);				   
+      font-size: 32px;
       text-align: center;
       border: 1px solid #333;
       border-radius: 5px;
@@ -88,7 +78,7 @@
         ctx.rotate(start + segmentAngle / 2);
         ctx.textAlign = 'right';
         ctx.fillStyle = '#000';
-        ctx.font = '32px Arial';
+        ctx.font = '24px Arial';
         ctx.fillText(segments[i], radius - 10, 10);
         ctx.restore();
       }
