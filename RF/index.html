@@ -32,13 +32,13 @@
     #resultContainer {
       position: absolute;
       top: 50%;
-      left: 50%;
+      left: 60%;
       transform: translate(-80%,-60%);
     }
-    #result {
+    #spinButton {
       width: 100px;
       height: 50px;
-      font-size: 40px;
+      font-size: 25px;
       text-align: center;
       border: 1px solid #333;
       border-radius: 5px;
@@ -47,17 +47,16 @@
 </head>
 <body>
   <div id="container">
-    <canvas id="wheel" width="400" height="400"></canvas>
+    <canvas id="wheel" width="440" height="440"></canvas>
     <div id="resultContainer">
-      <input type="text" id="result" readonly value="" />
+      <button id="spinButton">GO !</button>
     </div>
-    <button id="spinButton">GO !</button>
+    
   </div>
   <script>
     const canvas = document.getElementById('wheel');
     const ctx = canvas.getContext('2d');
     const spinButton = document.getElementById('spinButton');
-    const resultInput = document.getElementById('result');
     const segments = ['0', '60', '120', '180', '240', 'X2'];
     const segmentColors = ['#FF5733', '#33FF57', '#3357FF', '#FFFF33', '#FF33FF', '#33FFFF'];
     const centerX = canvas.width / 2;
@@ -100,9 +99,9 @@
     // Dessiner une flèche orientée vers le centre (à droite)
     function drawArrow() {
       ctx.beginPath();
-      ctx.moveTo(centerX + radius + 15, centerY);
-      ctx.lineTo(centerX + radius + 25, centerY - 10);
-      ctx.lineTo(centerX + radius + 25, centerY + 10);
+      ctx.moveTo(centerX + radius + 5, centerY);
+      ctx.lineTo(centerX + radius + 15, centerY - 10);
+      ctx.lineTo(centerX + radius + 15, centerY + 10);
       ctx.closePath();
       ctx.fillStyle = '#FF0000';
       ctx.fill();
@@ -112,7 +111,7 @@
     function spinWheel() {
       if (isSpinning) return;
       isSpinning = true;
-      const spinDuration = 3000; // 3 secondes
+      const spinDuration = 2000; // 2 secondes
       const targetAngle = Math.random() * (2 * Math.PI) + 5 * 2 * Math.PI; // Rotation aléatoire
       const start = Date.now();
 
@@ -133,7 +132,8 @@
             (segments.length - (startAngle / (2 * Math.PI)) * segments.length) % segments.length
           );
           const result = segments[winningIndex];
-          resultInput.value = result; // Mettre à jour la zone de texte avec le résultat
+          //resultInput.value = result; // Mettre à jour la zone de texte avec le résultat
+          spinButton.innerText = result
         }
       }
 
