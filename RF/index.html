@@ -36,8 +36,12 @@
       transform: translate(-80%,-60%);
     }
     #spinButton {
+      position: absolute;
+      top: 210px;
+      left: 260px;
       width: 100px;
       height: 50px;
+      transform: translate(-80%,-60%);
       font-size: 25px;
       text-align: center;
       border: 1px solid #333;
@@ -48,10 +52,7 @@
 <body>
   <div id="container">
     <canvas id="wheel" width="440" height="440"></canvas>
-    <div id="resultContainer">
-      <button id="spinButton">GO !</button>
-    </div>
-    
+    <button id="spinButton">GO !</button> 
   </div>
   <script>
     const canvas = document.getElementById('wheel');
@@ -94,8 +95,9 @@
 
       // Dessiner la flèche
       drawArrow();
-    }
 
+    }
+    ///////////////////////////////////////////////////////////
     // Dessiner une flèche orientée vers le centre (à droite)
     function drawArrow() {
       ctx.beginPath();
