@@ -1,24 +1,87 @@
-﻿<!-- Voici un exemple de code JavaScript permettant à un joueur de déclencher un chronomètre et de tenter de stopper le chronomètre exactement à 10s00. Si le joueur réussit, un message "Gagné" s'affiche.
--->
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chronomètre</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #time {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        #message {
+            font-size: 48px;
+            color: green;
+        }
+    </style>
 </head>
 <body>
+    
+    <H2>Défi : stoppe le chrono à 3.00 s !</H2>
+    <div id="time">0.00</div>
+    <button id="startButton">Démarrer</button>
+    <button id="stopButton" disabled>Arrêter</button>
+    <div id="message"></div>
 
-    <div id="timer-container">
-        <p id="timer">00.00</p>
-        <button id="start-button">Démarrer</button>
-        <button id="stop-button" disabled>Arrêter</button>
-        <p id="message"></p>
-    </div>
+    <script>
+        let timer;
+        let startTime;
+        let running = false;
+        let elapsedTime = 0;
+        let stopTime = null;
 
-    <script src="script.js"></script>
+        const timeDisplay = document.getElementById('time');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        const message = document.getElementById('message');
+
+        function formatTime(time) {
+            return (time / 1000).toFixed(2); // Format en secondes avec 2 décimales
+        }
+
+        function startChrono() {
+            // Réinitialiser le chronomètre à zéro lors du démarrage
+            if (!running) {
+                elapsedTime = 0; // Remettre à zéro
+                timeDisplay.textContent = formatTime(elapsedTime); // Mettre à jour l'affichage
+                message.textContent = ''; // Réinitialiser le message de gagnant
+
+                running = true;
+                startTime = Date.now();
+                timer = setInterval(() => {
+                    elapsedTime = Date.now() - startTime;
+                    timeDisplay.textContent = formatTime(elapsedTime);
+                }, 10);
+
+                startButton.disabled = true;
+                stopButton.disabled = false;
+            }
+        }
+
+        function stopChrono() {
+            running = false;
+            clearInterval(timer);
+            stopTime = elapsedTime;
+            timeDisplay.textContent = formatTime(elapsedTime);
+
+            startButton.disabled = false;
+            stopButton.disabled = true;
+
+            // Vérifier si le chronomètre a été arrêté à 3.00 secondes
+            if (Math.abs(stopTime - 3000) <= 5) { // Tolérance de 5ms
+                message.innerHTML = '&#128526';
+            } else {
+                message.innerHTML = '&#128542';
+            }
+        }
+
+        startButton.addEventListener('click', startChrono);
+        stopButton.addEventListener('click', stopChrono);
+    </script>
 </body>
 </html>
-
