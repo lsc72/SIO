@@ -14,7 +14,11 @@
             font-size: 48px;
             margin-bottom: 20px;
         }
-        #message {
+        #essais {
+            font-size: 24px;
+            color: blue;
+        }
+	#message {
             font-size: 48px;
             color: green;
         }
@@ -22,45 +26,57 @@
 </head>
 <body>
     
-    <H2>Défi : stoppe le chrono à 3.00 s !</H2>
+    <H1 align=center>Défi : stoppe le chrono à 3.00 s !</H1>
     <div id="time">0.00</div>
-    <button id="startButton">Démarrer</button>
-    <button id="stopButton" disabled>Arrêter</button>
+    <button id="startButton">START</button>
+    <button id="stopButton" disabled>STOP</button>
+    <div id="essais">Essais : 0</div>
     <div id="message"></div>
 
     <script>
         let timer;
         let startTime;
         let running = false;
+	let succes = false;
         let elapsedTime = 0;
         let stopTime = null;
+	let essais = 0; // Compteur d'essais
 
         const timeDisplay = document.getElementById('time');
         const startButton = document.getElementById('startButton');
         const stopButton = document.getElementById('stopButton');
-        const message = document.getElementById('message');
+	const essaisDisplay = document.getElementById('essais');
+        const messageDisplay = document.getElementById('message');
 
         function formatTime(time) {
             return (time / 1000).toFixed(2); // Format en secondes avec 2 décimales
         }
 
         function startChrono() {
+      		messageDisplay.textContent = '';
+
+      		// Remettre le compteur d'essais uniquement après un succès
+      		if (succes) {
+        		essais = 0;
+        		succes = false;
+      		}
+		essaisDisplay.textContent = `Essais : ${essais}`;
+      		startButton.disabled = true;
+      		stopButton.disabled = false;
             // Réinitialiser le chronomètre à zéro lors du démarrage
-            if (!running) {
-                elapsedTime = 0; // Remettre à zéro
-                timeDisplay.textContent = formatTime(elapsedTime); // Mettre à jour l'affichage
-                message.textContent = ''; // Réinitialiser le message de gagnant
+            	if (!running) {
+                	elapsedTime = 0; // Remettre à zéro
+                	timeDisplay.textContent = formatTime(elapsedTime); // Mettre à jour l'affichage
+                	message.textContent = ''; // Réinitialiser le message de gagnant
 
-                running = true;
-                startTime = Date.now();
-                timer = setInterval(() => {
-                    elapsedTime = Date.now() - startTime;
-                    timeDisplay.textContent = formatTime(elapsedTime);
-                }, 10);
+                	running = true;
+                	startTime = Date.now();
+                	timer = setInterval(() => {
+                    		elapsedTime = Date.now() - startTime;
+                    		timeDisplay.textContent = formatTime(elapsedTime);
+                	}, 10);
 
-                startButton.disabled = true;
-                stopButton.disabled = false;
-            }
+            	}
         }
 
         function stopChrono() {
@@ -68,15 +84,17 @@
             clearInterval(timer);
             stopTime = elapsedTime;
             timeDisplay.textContent = formatTime(elapsedTime);
-
+	    essais++; // Incrémenter le compteur d'essais
+	    essaisDisplay.textContent = `Essais : ${essais}`;
             startButton.disabled = false;
             stopButton.disabled = true;
 
             // Vérifier si le chronomètre a été arrêté à 3.00 secondes
             if (Math.abs(stopTime - 3000) <= 5) { // Tolérance de 5ms
                 message.innerHTML = '&#128526';
+		succes = true; // Marquer le succès
             } else {
-                message.innerHTML = '&#128542';
+                message.innerHTML = '&#128542';	
             }
         }
 
