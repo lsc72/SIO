@@ -99,7 +99,7 @@
             stopButton.disabled = true;
 
             // Vérifier si le chronomètre a été arrêté à 3.00 secondes
-            if (Math.abs(stopTime - 3000) <= 5) { // Tolérance de 5ms
+            if (Math.abs(stopTime - 3000) <= 7) { // Tolérance de 7ms
                 message.innerHTML = '&#128526';
 		succes = true; // Marquer le succès
             } else {
