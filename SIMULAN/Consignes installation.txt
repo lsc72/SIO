@@ -1,0 +1,4 @@
+﻿Pour installer le simulateur sur un PC, il faut :
+1-Recopier localement dans un nouveau dossier les fichiers dotnetfx.exe et SimulateurV2.exe
+2-Installer la version 1.1 du framework dotnet avec dotnetfx.exe (23Mo) en ignorant les éventuels avertissements
+3-Créer un raccourci de SimulateurV2.exe sur le bureau
