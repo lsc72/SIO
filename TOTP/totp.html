@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <title>Heure et TOTP</title>
     <style>
-	body { font-family: Arial, sans-serif; text-align: center; padding: 50px; color: #aa0000;}
-    	#time {
+	body { font-family: Arial; text-align: center; padding: 50px; color: #aa0000;}
+    	#time, #secret, input {
       		font-size: 2em;
-      		font-family: Verdana, sans-serif;
-		color: #7B00FF;
-		padding: 10px;
+      		font-family: Verdana;
+		color: #880088;
+		padding: 5px;
     	}
     	#totp {
       		font-size: 2em;
-      		font-family: Tahoma, sans-serif;
+      		font-family: Tahoma;
+		letter-spacing: 5px;
       		color: #007BFF;
 		border: 2px solid black; 
 		border-radius: 10px;
@@ -22,19 +23,27 @@
 		padding: 10px;
 		
     	}
+ 	input {
+      		text-align: center;  /* Centre le texte dans le champ input */
+      		padding: 10px; font-size: 0.75em; display: inline-block;
+    	}
   </style>
 
 </head>
 <body>
     <h1>Authentification TOTP</h1>
-    <div id="time"></div>
+    <div id="time"></div>    
+    <h2>Secret</h2> <div id="secret" >
+	<input type="text" id="sB32" placeholder="Secret en base32" align=center value="JBSWY3DPEHPK3PXP">
+    // autre exemple : NZQXM2LHMF2GK5LS ('navigateur' en base 32) 
+    </div>
     <h2>Code</h2> <div id="totp"></div>
 
     <script>
         // Fonction pour générer un code TOTP
         function generateTOTP() {
-	    // Clé secrète exemple   
-	    const secret = base32Encode(atob("SGVsbG8h3q2+7w=="));
+	    // Clé secrète 
+	    const secret = document.getElementById('sB32').value;
             const epoch = Math.floor(Date.now() / 1000);
             const time = Math.floor(epoch / 30);
             // Implémentation simple de l'algorithme TOTP

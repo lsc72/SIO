@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversion ASCII en Base32</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px 0;
+      font-size: 16px;
+      width: 100%;
+      max-width: 400px;
+    }
+    output {
+      display: block;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      max-width: 400px;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Convertir une chaîne ASCII en Base32</h1>
+
+  <label for="ascii-input">Entrez une chaîne ASCII :</label>
+  <br><input type="text" id="ascii-input" placeholder="Exemple : Hello, world!" />
+  <br>  <button onclick="convertToBase32()">Convertir en Base32</button>
+  <br>  <label for="base32-output">Résultat en Base32 :</label>
+  <output id="base32-output"></output>
+
+  <script>
+    // Fonction de conversion de texte ASCII en Base32
+    function asciiToBase32(asciiString) {
+      const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+      let bits = '';
+      let base32String = '';
+    
+      // Convertir chaque caractère ASCII en sa valeur binaire sur 8 bits
+      for (let i = 0; i < asciiString.length; i++) {
+          bits += asciiString.charCodeAt(i).toString(2).padStart(8, '0');
+      }
+  
+      // Diviser la chaîne binaire en blocs de 5 bits
+      while (bits.length % 5 !== 0) {
+          bits += '0';  // Compléter avec des zéros pour que la longueur soit multiple de 5
+      }
+  
+      // Convertir les blocs de 5 bits en Base32
+      for (let i = 0; i < bits.length; i += 5) {
+          const chunk = bits.substr(i, 5);
+          const index = parseInt(chunk, 2);  // Convertir le bloc binaire en un index
+          base32String += base32Chars[index];
+      }
+  
+      return base32String;
+    }
+
+    // Fonction pour récupérer le texte ASCII et afficher la conversion en Base32
+    function convertToBase32() {
+      const asciiInput = document.getElementById('ascii-input').value;  // Récupérer la chaîne entrée
+      const base32Output = document.getElementById('base32-output');   // Élément pour afficher le résultat
+
+      // Vérifier si l'input n'est pas vide
+      if (asciiInput.trim() !== '') {
+        const base32Result = asciiToBase32(asciiInput);  // Convertir la chaîne ASCII en Base32
+        base32Output.textContent = base32Result;         // Afficher le résultat
+      } else {
+        base32Output.textContent = 'Veuillez entrer une chaîne ASCII à convertir.';
+      }
+    }
+  </script>
+
+</body>
+</html>
