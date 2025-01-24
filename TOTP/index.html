@@ -4,22 +4,39 @@
     <meta charset="UTF-8">
     <title>Heure et TOTP</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        #time, #totp { font-size: 24px; margin: 20px; }
-    </style>
+	body { font-family: Arial, sans-serif; text-align: center; padding: 50px; color: #aa0000;}
+    	#time {
+      		font-size: 2em;
+      		font-family: Verdana, sans-serif;
+		color: #7B00FF;
+		padding: 10px;
+    	}
+    	#totp {
+      		font-size: 2em;
+      		font-family: Tahoma, sans-serif;
+      		color: #007BFF;
+		border: 2px solid black; 
+		border-radius: 10px;
+		display: inline-block;
+		background-color: #f0f0f0;
+		padding: 10px;
+		
+    	}
+  </style>
+
 </head>
 <body>
-    <h1>Heure et Code TOTP</h1>
+    <h1>Authentification TOTP</h1>
     <div id="time"></div>
-    <div id="totp"></div>
+    <h2>Code</h2> <div id="totp"></div>
 
     <script>
         // Fonction pour générer un code TOTP
         function generateTOTP() {
-            const secret = 'JBSWY3DPEHPK3PXP'; // Clé secrète exemple
+	    // Clé secrète exemple   
+	    const secret = base32Encode(atob("SGVsbG8h3q2+7w=="));
             const epoch = Math.floor(Date.now() / 1000);
             const time = Math.floor(epoch / 30);
-            
             // Implémentation simple de l'algorithme TOTP
             function sha1(message) {
                 const crypto = window.crypto.subtle;
@@ -29,7 +46,18 @@
                     return Array.from(new Uint8Array(hash));
                 });
             }
-
+	    function base32Encode(str) {
+            	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+            	let binString = '';
+            	for (let i = 0; i < str.length; i++) {
+                	binString += str.charCodeAt(i).toString(2).padStart(8, '0');
+            	}
+            	let base32 = '';
+            	for (let i = 0; i < binString.length; i += 5) {
+                	base32 += alphabet[parseInt(binString.slice(i, i + 5), 2)];
+            	}
+            	return base32;
+            }
             function base32ToUint8Array(base32) {
                 const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
                 const bytes = [];
@@ -77,15 +105,14 @@
                 const bytes = new Uint8Array(signature);
                 const code = truncate(bytes) % 1000000;
                 document.getElementById('totp').textContent = 
-                    `Code TOTP: ${code.toString().padStart(6, '0')}`;
+                    `${code.toString().padStart(6, '0')}`;
             });
         }
 
         // Mise à jour de l'heure et du code TOTP
         function updateTimeAndTOTP() {
             const now = new Date();
-            document.getElementById('time').textContent = 
-                `Heure actuelle : ${now.toLocaleTimeString()}`;
+            document.getElementById('time').textContent = `${now.toLocaleTimeString()}`;
             generateTOTP();
         }
 
