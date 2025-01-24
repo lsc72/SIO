@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur Base32/Base64</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin-top: 10px;
+        }
+        #output {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Convertisseur Base32/Base64</h1>
+
+    <div>
+        <h3>Convertir Base32 en Base64</h3>
+        <textarea id="base32Input" rows="4" cols="50" placeholder="Entrez ici une chaîne en Base32"></textarea>
+        <br>
+        <button onclick="convertBase32ToBase64()">Convertir en Base64</button>
+        <div id="base64Output"></div>
+    </div>
+
+    <div>
+        <h3>Convertir Base64 en Base32</h3>
+        <textarea id="base64Input" rows="4" cols="50" placeholder="Entrez ici une chaîne en Base64"></textarea>
+        <br>
+        <button onclick="convertBase64ToBase32()">Convertir en Base32</button>
+        <div id="base32Output"></div>
+    </div>
+
+    <script>
+        function convertBase32ToBase64() {
+            const base32String = document.getElementById('base32Input').value.trim();
+            try {
+                const decodedBase32 = base32Decode(base32String); // Décodage Base32
+                const encodedBase64 = btoa(decodedBase32); // Encodage en Base64
+                document.getElementById('base64Output').textContent = 'Base64: ' + encodedBase64;
+            } catch (e) {
+                document.getElementById('base64Output').textContent = 'Erreur de conversion Base32 vers Base64';
+            }
+        }
+
+        function convertBase64ToBase32() {
+            const base64String = document.getElementById('base64Input').value.trim();
+            try {
+                const decodedBase64 = atob(base64String); // Décodage Base64
+                const encodedBase32 = base32Encode(decodedBase64); // Encodage en Base32
+                document.getElementById('base32Output').textContent = 'Base32: ' + encodedBase32;
+            } catch (e) {
+                document.getElementById('base32Output').textContent = 'Erreur de conversion Base64 vers Base32';
+            }
+        }
+
+        // Fonction de décodage Base32
+        function base32Decode(base32) {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+            const base32Chars = Array.from(base32.toUpperCase()).filter(c => alphabet.includes(c));
+            let binString = '';
+            for (let i = 0; i < base32Chars.length; i++) {
+                let val = alphabet.indexOf(base32Chars[i]);
+                binString += val.toString(2).padStart(5, '0');
+            }
+            const byteArray = [];
+            for (let i = 0; i < binString.length; i += 8) {
+                byteArray.push(parseInt(binString.slice(i, i + 8), 2));
+            }
+            return String.fromCharCode(...byteArray);
+        }
+
+        // Fonction d'encodage Base32
+        function base32Encode(str) {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+            let binString = '';
+            for (let i = 0; i < str.length; i++) {
+                binString += str.charCodeAt(i).toString(2).padStart(8, '0');
+            }
+            let base32 = '';
+            for (let i = 0; i < binString.length; i += 5) {
+                base32 += alphabet[parseInt(binString.slice(i, i + 5), 2)];
+            }
+            return base32;
+        }
+    </script>
+</body>
+</html>
