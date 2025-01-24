@@ -1,43 +1,97 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Afficher l'heure en cours</title>
-  <style>
-    #currentTime {
-      font-size: 2em;
-      font-family: Arial, sans-serif;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Heure et TOTP</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        #time, #totp { font-size: 24px; margin: 20px; }
+    </style>
 </head>
 <body>
+    <h1>Heure et Code TOTP</h1>
+    <div id="time"></div>
+    <div id="totp"></div>
 
-<h2>Heure actuelle</h2>
-<div id="currentTime">Loading...</div>
+    <script>
+        // Fonction pour générer un code TOTP
+        function generateTOTP() {
+            const secret = 'JBSWY3DPEHPK3PXP'; // Clé secrète exemple
+            const epoch = Math.floor(Date.now() / 1000);
+            const time = Math.floor(epoch / 30);
+            
+            // Implémentation simple de l'algorithme TOTP
+            function sha1(message) {
+                const crypto = window.crypto.subtle;
+                const encoder = new TextEncoder();
+                const data = encoder.encode(message);
+                return crypto.digest('SHA-1', data).then(hash => {
+                    return Array.from(new Uint8Array(hash));
+                });
+            }
 
-<script>
-  // Fonction pour formater l'heure en "HH:mm:ss"
-  function formatTime(date) {
-    let hours = date.getHours().toString().padStart(2, '0');
-    let minutes = date.getMinutes().toString().padStart(2, '0');
-    let seconds = date.getSeconds().toString().padStart(2, '0');
-    return `${hours}:${minutes}:${seconds}`;
-  }
+            function base32ToUint8Array(base32) {
+                const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+                const bytes = [];
+                let bits = 0;
+                let buffer = 0;
 
-  // Fonction pour mettre à jour l'heure
-  function updateTime() {
-    const currentDate = new Date();  // Obtenir la date et l'heure actuelles
-    const timeString = formatTime(currentDate);  // Formater l'heure
-    document.getElementById('currentTime').textContent = timeString;  // Afficher l'heure
-  }
+                for (let char of base32) {
+                    buffer = (buffer << 5) | base32Chars.indexOf(char);
+                    bits += 5;
 
-  // Mettre à jour l'heure toutes les secondes
-  setInterval(updateTime, 1000);
+                    if (bits >= 8) {
+                        bytes.push((buffer >> (bits - 8)) & 255);
+                        bits -= 8;
+                    }
+                }
 
-  // Initialiser l'heure dès le chargement de la page
-  updateTime();
-</script>
+                return new Uint8Array(bytes);
+            }
 
+            function truncate(bytes) {
+                const offset = bytes[bytes.length - 1] & 0xf;
+                return (
+                    ((bytes[offset] & 0x7f) << 24) |
+                    ((bytes[offset + 1] & 0xff) << 16) |
+                    ((bytes[offset + 2] & 0xff) << 8) |
+                    (bytes[offset + 3] & 0xff)
+                );
+            }
+
+            // Génération du code TOTP
+            const hmacKey = base32ToUint8Array(secret);
+            const message = new Uint8Array(8);
+            const view = new DataView(message.buffer);
+            view.setBigUint64(0, BigInt(time), false);
+
+            crypto.subtle.importKey(
+                'raw', 
+                hmacKey, 
+                { name: 'HMAC', hash: 'SHA-1' }, 
+                false, 
+                ['sign']
+            ).then(key => 
+                crypto.subtle.sign('HMAC', key, message)
+            ).then(signature => {
+                const bytes = new Uint8Array(signature);
+                const code = truncate(bytes) % 1000000;
+                document.getElementById('totp').textContent = 
+                    `Code TOTP: ${code.toString().padStart(6, '0')}`;
+            });
+        }
+
+        // Mise à jour de l'heure et du code TOTP
+        function updateTimeAndTOTP() {
+            const now = new Date();
+            document.getElementById('time').textContent = 
+                `Heure actuelle : ${now.toLocaleTimeString()}`;
+            generateTOTP();
+        }
+
+        // Mise à jour toutes les secondes
+        updateTimeAndTOTP();
+        setInterval(updateTimeAndTOTP, 1000);
+    </script>
 </body>
 </html>
