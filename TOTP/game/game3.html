@@ -19,7 +19,7 @@
 	<div id="central1">
     	<h2>Fin de mission</h2>
     	<p>
-      	Pour ce dernier défi, il vous faut désencoder les secrets des 2 défis : vous obtiendrez une chaîne de caractères qui vous donnera le nom du personnage.
+      	Pour ce dernier défi, il vous faut désencoder les secrets des 2 défis : IFWGC3SU et KVJESTSH. Vous pourrez alors en déduire un texte qui vous donnera le nom du personnage.
     	</p>
 	
 	
@@ -30,7 +30,7 @@
 
   <!-- Pied -->
   <footer hidden>
-    <input type="text" id="code" maxlength="10" placeholder="Nom du personnage">
+    <input type="text" id="code" maxlength="11" placeholder="Nom du personnage">
     <button id="valid" onclick="validateCode()">Valider</button>
     <button hidden id="suite" >BRAVO, vous avez rempli la mission !</button>
   </footer>
@@ -42,7 +42,7 @@
     updateClock();
     document.getElementById('prenom').value=sessionStorage.getItem("prenom");
     niveau=sessionStorage.getItem("niveau");
-    //if (niveau == 2) {
+    //if (niveau == 3) {
     if (true) {
     } else {
 	window.location.href = "game0.html";
@@ -51,19 +51,16 @@
     // Fonction pour valider le code
     function validateCode() {
       const code = document.getElementById('code').value;
-      const codeok = atob("SUZXR0MzUkFLUktWRVNLT0k0PT09PT09");
-     alert(codeok);
-      if (code.length === 6 && /^\d+$/.test(code)) {
+      const codeok = atob("QWxhbiBUVVJJTkc=");
+     //alert(codeok);
+     
         if (code == codeok) {
 		document.getElementById('valid').hidden = true;
 		document.getElementById('suite').hidden = false;
 		sessionStorage.setItem("niveau",3);
 	} else {
 		alert('Incorrect');
-	}
-      } else {
-        alert('Veuillez saisir un nom.');
-      }
+	} 
     }
   </script>
 </body>
