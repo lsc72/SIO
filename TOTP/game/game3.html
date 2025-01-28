@@ -19,8 +19,9 @@
 	<div id="central1">
     	<h2>Fin de mission</h2>
     	<p>
-      	Pour ce dernier défi, il vous faut désencoder les secrets des 2 défis : IFWGC3SU et KVJESTSH. Vous pourrez alors en déduire un texte qui vous donnera le nom du personnage.
-    	</p>
+      	Pour ce dernier défi, il vous faut désencoder les secrets des 2 derniers défis : 
+	<ul><li>IFWGC3SU</li><li>KVJESTSH</li></ul><br></p>
+	<p>Vous pourrez alors en déduire un texte qui vous donnera le nom du personnage.</p>
 	
 	
 	<p>Saisir le nom du personnage en bas de cette page</p>
@@ -50,9 +51,9 @@
 
     // Fonction pour valider le code
     function validateCode() {
-      const code = document.getElementById('code').value;
-      const codeok = atob("QWxhbiBUVVJJTkc=");
-     //alert(codeok);
+      const code = (document.getElementById('code').value).replace(/\s+/g, '').toUpperCase();
+      const codeok = atob("QUxBTlRVUklORw==");
+       //alert(codeok);
      
         if (code == codeok) {
 		document.getElementById('valid').hidden = true;

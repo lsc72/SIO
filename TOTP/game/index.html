@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Défis TOTP</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <!-- Entête -->
+  <header>
+    <h1>Authentification TOTP</h1>
+    <div id="clock"></div>
+  </header>
+
+  <!-- Bloc central -->
+  <main>
+	<div id="central1">
+    	<h2>Mission</h2>
+    	<p>
+      	Votre mission est de relever une succession de défis pour découvrir un personnage. 
+        Pour chaque défi, vous devez saisir un code TOTP en bas de cette page.
+	A chaque code TOTP est associé un secret que vous devez trouver avant de pouvoir saisir
+        ce code.
+	Chaque secret est une chaîne de 8 ou 16 caractères base32 représentant 5 ou 10 octets, 
+	selon les règles de la <a href="https://datatracker.ietf.org/doc/html/rfc4648#section-6"
+	target="_blank">RFC 4648</a>.
+    	</p>
+	<p>Le code TOTP est le résultat d'un calcul dépendant d'un secret et de l'horloge.
+	Attention ! le secret est fixe mais le code change toutes les 30 secondes ! 
+	Pour calculer ce code, le plus simple est d'installer sur votre smartphone un authentificateur TOTP
+	grâce au QRcode suivant :
+	</p>
+	<div id="centralg">
+		<img src="aegis.png" width=150 height=150  alt="authentificateur TOTP">
+		<div id="centrald">
+		<p>Pour tester votre authentificateur, saisir une nouvelle entrée avec les paramètres suivants :</p>
+		<ul><li>Nom : <input id="prenom" type=text placeholder="votre prénom"> </i></li>
+		<li>Emetteur : TOTP #0</li>
+		<li>Code secret : INZG62LY</li></ul>
+		</div>
+	</div>
+	<p>Saisir et valider sans délai le code fourni par l'authentificateur en bas de cette page</p>
+  	</div>
+    
+  </main>
+
+  <!-- Pied -->
+  <footer>
+    <label>Code TOTP</label>
+    <input type="text" id="code" maxlength="6" placeholder="Code à 6 chiffres">
+    <button id="valid" onclick="validateCode()">Valider</button>
+    <button hidden id="suite" onclick="window.location.href='game1.html';">BRAVO ! cliquez ici pour commencer la mission.</button>
+  </footer>
+  <script src="clock.js"></script>
+  <script src="totp.js"></script>
+  <script>
+    // Met à jour l'horloge toutes les secondes
+    setInterval(updateClock, 1000);
+    updateClock();
+    
+    sessionStorage.setItem("niveau",0);
+    // Fonction pour valider le code
+    function validateCode() {
+      const code=document.getElementById('code').value;
+      const codeok=generateTOTP("INZG62LY");
+      const prenom=document.getElementById('prenom').value
+      sessionStorage.setItem("prenom",prenom);
+      if (code.length === 6 && /^\d+$/.test(code)) {
+        if (code===codeok) {
+		document.getElementById('valid').hidden = true;
+		document.getElementById('suite').hidden = false;
+		sessionStorage.setItem("niveau",1);
+		//alert('ok : &#10004; &#9940;');
+	} else {
+		alert('CODE INVALIDE');
+	}
+      } else {
+        alert('Veuillez saisir un code valide à 6 chiffres.');
+      }
+    }
+  </script>
+</body>
+</html>
