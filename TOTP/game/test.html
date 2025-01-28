@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Défis TOTP</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <!-- Entête -->
+  <header>
+    <h1>Authentification TOTP</h1>
+    <div id="clock"></div>
+  </header>
+
+
+  <!-- Pied -->
+  <footer>
+    <label>Code TOTP</label>
+    <input type="text" id="sB32" maxlength="6" placeholder="secret en base32">
+    <button onclick="validateCode()">Valider</button>
+  </footer>
+  <script src="clock.js"></script>
+  <script src="totp.js"></script>
+  <script>
+
+
+    // Fonction pour valider le code
+    function validateCode() {
+      const sB32=document.getElementById('sB32').value;
+      const codeTOTP=generateTOTP(sB32);
+      //alert(codeTOTP);
+    }
+  </script>
+</body>
+</html>

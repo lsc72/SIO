@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Défis TOTP</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <!-- Entête -->
+  <header>
+    <h1>Authentification TOTP</h1>
+    <div id="clock"></div>
+  </header>
+
+  <!-- Bloc central -->
+  <main>
+	<div id="central1">
+    	<h2>Défi #1</h2>
+    	<p>
+      	Pour ce 1er défi, le secret se cache derrière le QRcode suivant :
+    	</p>
+	
+	<div id="centralg">
+		<img src="defi1.png" width=150 height=150  alt="authentificateur TOTP">
+		<div id="centrald">
+		<p>Pour valider ce défi, saisir une nouvelle entrée sur votre authentificateur, avec les paramètres suivants :</p>
+		<ul><li>Nom : <input id="prenom" type=text> </i></li></li>
+		<li>Emetteur : TOTP #1</li>
+		<li>Code secret : <i>cf QRcode</i></li></ul>
+		</div>
+	</div>
+	<p>Saisir et valider sans délai le code fourni par l'authentificateur en bas de cette page</p>
+  	</div>
+    
+  </main>
+
+  <!-- Pied -->
+  <footer>
+    <label>Code TOTP</label>
+    <input type="text" id="code" maxlength="6" placeholder="Code à 6 chiffres">
+    <button id="valid" onclick="validateCode()">Valider</button>
+    <button hidden id="suite" onclick="window.location.href='game2.html';">BRAVO, Cliquez-moi pour la suite.</button>
+  </footer>
+  <script src="clock.js"></script>
+  <script src="totp.js"></script>
+  <script>
+    // Met à jour l'horloge toutes les secondes
+    setInterval(updateClock, 1000);
+    updateClock();
+    document.getElementById('prenom').value=sessionStorage.getItem("prenom");
+    niveau=sessionStorage.getItem("niveau");
+    //if (niveau == 1) {
+    if (true) {
+    } else {
+	window.location.href = "game0.html";
+    }
+
+    // Fonction pour valider le code
+    function validateCode() {
+      const code = document.getElementById('code').value;
+      let secret = atob("SUZXR0MzU1U=");    
+      const codeok = generateTOTP(secret);
+     // alert(codeok);
+      if (code.length === 6 && /^\d+$/.test(code)) {
+        if (code == codeok) {
+		document.getElementById('valid').hidden = true;
+		document.getElementById('suite').hidden = false;
+		sessionStorage.setItem("niveau",2);
+		//alert('ok : &#10004; &#9940;');
+	} else {
+		alert('CODE INVALIDE');
+	}
+      } else {
+        alert('Veuillez saisir un code valide à 6 chiffres.');
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+

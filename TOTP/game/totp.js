@@ -1,0 +1,142 @@
+        // Fonction pour générer un code TOTP
+        function generateTOTP(secret) {
+            const epoch = Math.floor(Date.now() / 1000);
+            const time = Math.floor(epoch / 30);
+            // Implémentation simple de l'algorithme TOTP
+            function sha1(message) {
+                const crypto = window.crypto.subtle;
+                const encoder = new TextEncoder();
+                const data = encoder.encode(message);
+                return crypto.digest('SHA-1', data).then(hash => {
+                    return Array.from(new Uint8Array(hash));
+                });
+            }
+	    function base32Encode(str) {
+            	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+            	let binString = '';
+            	for (let i = 0; i < str.length; i++) {
+                	binString += str.charCodeAt(i).toString(2).padStart(8, '0');
+            	}
+            	let base32 = '';
+            	for (let i = 0; i < binString.length; i += 5) {
+                	base32 += alphabet[parseInt(binString.slice(i, i + 5), 2)];
+            	}
+            	return base32;
+            }
+            function base32ToUint8Array(base32) {
+                const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+                const bytes = [];
+                let bits = 0;
+                let buffer = 0;
+
+                for (let char of base32) {
+                    buffer = (buffer << 5) | base32Chars.indexOf(char);
+                    bits += 5;
+
+                    if (bits >= 8) {
+                        bytes.push((buffer >> (bits - 8)) & 255);
+                        bits -= 8;
+                    }
+                }
+
+                return new Uint8Array(bytes);
+            }
+
+            function truncate(bytes) {
+                const offset = bytes[bytes.length - 1] & 0xf;
+                return (
+                    ((bytes[offset] & 0x7f) << 24) |
+                    ((bytes[offset + 1] & 0xff) << 16) |
+                    ((bytes[offset + 2] & 0xff) << 8) |
+                    (bytes[offset + 3] & 0xff)
+                );
+            }
+
+            // Génération du code TOTP
+            const hmacKey = base32ToUint8Array(secret);
+            const message = new Uint8Array(8);
+            const view = new DataView(message.buffer);
+            view.setBigUint64(0, BigInt(time), false);
+            crypto.subtle.importKey(
+                'raw', 
+                hmacKey, 
+                { name: 'HMAC', hash: 'SHA-1' }, 
+                false, 
+                ['sign']
+            ).then(key => 
+                crypto.subtle.sign('HMAC', key, message)
+            ).then(signature => {
+                const bytes = new Uint8Array(signature);
+                const code = truncate(bytes) % 1000000;
+                strCode = `${code.toString().padStart(6, '0')}`;
+            });
+	    return(strCode);
+        }
+
+        // Mise à jour de l'heure et du code TOTP
+        function updateTimeAndTOTP() {
+            const now = new Date();
+      //      document.getElementById('time').textContent = `${now.toLocaleTimeString()}`;
+      //      generateTOTP(document.getElementById('sB32').value);
+        }
+
+        function encodeBase32(input) {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+            let padding = '=';
+            let output = '';
+            let buffer = 0;
+            let bitsLeft = 0;
+
+            for (const char of input) {
+                buffer = (buffer << 8) | char.charCodeAt(0);
+                bitsLeft += 8;
+                while (bitsLeft >= 5) {
+                    const index = (buffer >> (bitsLeft - 5)) & 31;
+                    output += alphabet[index];
+                    bitsLeft -= 5;
+                }
+            }
+
+            if (bitsLeft > 0) {
+                const index = (buffer << (5 - bitsLeft)) & 31;
+                output += alphabet[index];
+            }
+
+            while (output.length % 8 !== 0) {
+                output += padding;
+            }
+
+            return output;
+        }
+
+        function encodeBase64(input) {
+            return btoa(input);
+        }
+
+        function decodeBase64(input) {
+            return atob(input);
+        }
+
+        function processString() {
+            const input = document.getElementById('inputText').value;
+
+            if (!input) {
+                document.getElementById('result').textContent = 'Veuillez entrer une chaîne.';
+                return;
+            }
+
+            // Étape 1 : Encoder en Base32
+            const base32Encoded = encodeBase32(input);
+
+            // Étape 2 : Encoder en Base64
+            const base64Encoded = encodeBase64(base32Encoded);
+
+            // Étape 3 : Décoder le Base64
+            const base64Decoded = decodeBase64(base64Encoded);
+
+            document.getElementById('result').innerHTML = `
+                <strong>Résultat Base32 :</strong> ${base32Encoded}<br>
+                <strong>Résultat Base64 :</strong> ${base64Encoded}<br>
+                <strong>Base64 Décodé :</strong> ${base64Decoded}
+            `;
+        }

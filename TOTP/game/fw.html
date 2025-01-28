@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Effet Feu d'Artifice</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: cyan;
+        }
+
+        .firework {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Fonction pour générer un nombre aléatoire entre min et max
+        function random(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Fonction principale pour créer l'effet du feu d'artifice
+        function createFirework(x, y) {
+            const fireworkCount = 100; // Nombre de particules par feu d'artifice
+            const colors = ['#ff0044', '#ff9900', '#33cc33', '#3399ff', '#ff33cc']; // Couleurs des particules
+
+            for (let i = 0; i < fireworkCount; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                document.body.appendChild(firework);
+
+                // Positionner la particule au centre du clic
+                firework.style.left = `${x}px`;
+                firework.style.top = `${y}px`;
+
+                // Appliquer une couleur aléatoire
+                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                // Générer une trajectoire aléatoire pour chaque particule
+                const angle = random(0, 2 * Math.PI); // Angle de départ
+                const speed = random(2, 5); // Vitesse de la particule
+                const distance = random(50, 150); // Distance parcourue
+
+                // Animation de l'explosion de la particule
+                firework.style.animation = `explode ${random(0.5, 1.5)}s linear forwards`;
+
+                // Définir la trajectoire de la particule
+                firework.style.animationDelay = `${random(0, 0.5)}s`;
+
+                firework.style.left = `${x}px`;
+                firework.style.top = `${y}px`;
+
+                // Calculer la position finale de la particule
+                const finalX = x + Math.cos(angle) * distance;
+                const finalY = y + Math.sin(angle) * distance;
+
+                // Ajouter un effet de disparition
+                firework.style.transition = `all ${random(1, 2)}s ease-out`;
+
+                // Déplacement final de la particule
+                setTimeout(() => {
+                    firework.style.left = `${finalX}px`;
+                    firework.style.top = `${finalY}px`;
+                    firework.style.opacity = 0;
+                }, 10);
+
+                // Supprimer l'élément après l'animation
+                setTimeout(() => {
+                    firework.remove();
+                }, 2000);
+            }
+        }
+
+        // Créer un feu d'artifice lorsque l'utilisateur clique sur la page
+        document.body.addEventListener('click', (e) => {
+            const x = e.pageX;
+            const y = e.pageY;
+            createFirework(x, y);
+        });
+    </script>
+</body>
+</html>

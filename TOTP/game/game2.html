@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Défis TOTP</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <!-- Entête -->
+  <header>
+    <h1>Authentification TOTP</h1>
+    <div id="clock"></div>
+  </header>
+
+  <!-- Bloc central -->
+  <main>
+	<div id="central1">
+    	<h2>Défi #2</h2>
+    	<p>
+      	Pour ce 2nd défi, le secret se cache aussi sous un QRcode :
+    	</p>
+	
+	<div id="centralg">
+		<img src="defi2.png" width=150 height=150  alt="authentificateur TOTP">
+		<div id="centrald">
+		<p>Attention ! le secret a été encodé avec ROT13 : il faut donc le désencoder avant de saisir une nouvelle entrée sur votre authentificateur, avec les paramètres suivants :</p>
+		<ul><li>Nom : <input id="prenom" type=text> </i></li></li>
+		<li>Emetteur : TOTP #2</li>
+		<li>Code secret : <i>cf QRcode</i></li></ul>
+		</div>
+	</div>
+	<p>Saisir et valider sans délai le code fourni par l'authentificateur en bas de cette page</p>
+  	</div>
+    
+  </main>
+
+  <!-- Pied -->
+  <footer>
+    <label>Code TOTP</label>
+    <input type="text" id="code" maxlength="6" placeholder="Code à 6 chiffres">
+    <button id="valid" onclick="validateCode()">Valider</button>
+    <button hidden id="suite" onclick="window.location.href='game3.html';">BRAVO, Cliquez-moi pour la suite.</button>
+  </footer>
+  <script src="clock.js"></script>
+  <script src="totp.js"></script>
+  <script>
+    // Met à jour l'horloge toutes les secondes
+    setInterval(updateClock, 1000);
+    updateClock();
+    document.getElementById('prenom').value=sessionStorage.getItem("prenom");
+    niveau=sessionStorage.getItem("niveau");
+    //if (niveau == 2) {
+    if (true) {
+    } else {
+	window.location.href = "game0.html";
+    }
+
+    // Fonction pour valider le code
+    function validateCode() {
+      const code = document.getElementById('code').value;
+      let secret = atob("S1ZKRVNUU0g="); 
+      const codeok = generateTOTP(secret);
+     // alert(codeok);
+      if (code.length === 6 && /^\d+$/.test(code)) {
+        if (code == codeok) {
+		document.getElementById('valid').hidden = true;
+		document.getElementById('suite').hidden = false;
+		sessionStorage.setItem("niveau",3);
+	} else {
+		alert('CODE INVALIDE');
+	}
+      } else {
+        alert('Veuillez saisir un code valide à 6 chiffres.');
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
