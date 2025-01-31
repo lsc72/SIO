@@ -36,6 +36,7 @@
   </footer>
   <script src="clock.js"></script>
   <script src="totp.js"></script>
+  <script src="fw.js"></script>
   <script>
     // Met à jour l'horloge toutes les secondes
     setInterval(updateClock, 1000);
@@ -60,7 +61,7 @@
         if (code == codeok) {
 		document.getElementById('valid').hidden = true;
 		document.getElementById('suite').hidden = false;
-		sessionStorage.setItem("niveau",3);
+		initAdvancedFireworks();
 	} else {
 		alert('Incorrect');
 	} 
