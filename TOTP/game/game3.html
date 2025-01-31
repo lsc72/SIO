@@ -19,19 +19,18 @@
 	<div id="central1">
     	<h2>Fin de mission</h2>
     	<p>
-      	Pour ce dernier défi, il vous faut désencoder les secrets des 2 derniers défis : 
+      	Pour terminer, il vous faut désencoder les secrets des 2 derniers défis : 
 	<ul><li>IFWGC3SU</li><li>KVJESTSH</li></ul><br></p>
 	<p>Vous pourrez alors en déduire un texte qui vous donnera le nom du personnage.</p>
-	
-	
-	<p>Saisir le nom du personnage en bas de cette page</p>
+	<p style="color: darkorange">Indice : base32 &#x27F9; ascii</p>
+	<p>Il ne restera plus qu'à saisir et valider le nom complet du personnage en bas de cette page.</p>
   	</div>
     
   </main>
 
   <!-- Pied -->
-  <footer hidden>
-    <input type="text" id="code" maxlength="11" placeholder="Nom du personnage">
+  <footer>
+    <input type="text" id="code" maxlength="11" placeholder="Nom personnage">
     <button id="valid" onclick="validateCode()">Valider</button>
     <button hidden id="suite" >BRAVO, vous avez rempli la mission !</button>
   </footer>
@@ -41,11 +40,14 @@
     // Met à jour l'horloge toutes les secondes
     setInterval(updateClock, 1000);
     updateClock();
-    document.getElementById('prenom').value=sessionStorage.getItem("prenom");
-    niveau=sessionStorage.getItem("niveau");
-    //if (niveau == 3) {
-    if (true) {
-    } else {
+    prenom=sessionStorage.getItem("prenom");
+    //if (prenom !== null) {}
+    suite=false;
+    n1=sessionStorage.getItem("niveau1");   
+    n2=sessionStorage.getItem("niveau2");
+    suite = ((n1 === "true") && (n2 === "true"));
+    //alert(n1 + " " + n2);
+    if (suite) { } else {
 	window.location.href = "game0.html";
     }
 

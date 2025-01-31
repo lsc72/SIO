@@ -49,11 +49,9 @@
     // Met à jour l'horloge toutes les secondes
     setInterval(updateClock, 1000);
     updateClock();
-    document.getElementById('prenom').value=sessionStorage.getItem("prenom");
-    niveau=sessionStorage.getItem("niveau");
-    //if (niveau == 2) {
-    if (true) {
-    } else {
+    prenom=sessionStorage.getItem("prenom");
+    if (prenom !== null) {document.getElementById('prenom').value=prenom;}
+    if (true) {} else {
 	window.location.href = "game0.html";
     }
 
@@ -67,7 +65,7 @@
         if (code == codeok) {
 		document.getElementById('valid').hidden = true;
 		document.getElementById('suite').hidden = false;
-		sessionStorage.setItem("niveau",3);
+		sessionStorage.setItem("niveau2",true);
 	} else {
 		alert('CODE INVALIDE');
 	}

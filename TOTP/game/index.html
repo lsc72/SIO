@@ -20,15 +20,14 @@
     	<h2>Mission</h2>
     	<p>
       	Votre mission est de relever une succession de défis pour découvrir un personnage. 
-        Pour chaque défi, vous devez saisir un code TOTP en bas de cette page.
-	A chaque code TOTP est associé un secret que vous devez trouver avant de pouvoir saisir
-        ce code.
-	Chaque secret est une chaîne de 8 ou 16 caractères base32 représentant 5 ou 10 octets, 
-	selon les règles de la <a href="https://datatracker.ietf.org/doc/html/rfc4648#section-6"
-	target="_blank">RFC 4648</a>.
+        Pour chaque défi, vous devrez saisir en bas de cette page un code TOTP, qui est le 
+        résultat d'un calcul dépendant d'un secret et de l'horloge.
+	Un secret est une chaîne de caractères base32 représentant 5 octets selon les règles de 
+        la <a href="https://datatracker.ietf.org/doc/html/rfc4648#section-6" target="_blank">RFC 4648</a>.
     	</p>
-	<p>Le code TOTP est le résultat d'un calcul dépendant d'un secret et de l'horloge.
-	Attention ! le secret est fixe mais le code change toutes les 30 secondes ! 
+	<p>
+        A vous de trouver chaque secret, ce qui permettra de calculer le code correspondant.
+        Attention ! le secret est fixe mais le code change toutes les 30 secondes ! 
 	Pour calculer ce code, le plus simple est d'installer sur votre smartphone un authentificateur TOTP
 	grâce au QRcode suivant :
 	</p>

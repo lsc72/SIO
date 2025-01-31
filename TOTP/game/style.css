@@ -51,10 +51,10 @@ main {
   margin-bottom: 10px;
 }
 
-#central1 p {
+#central1 p,ul {
   font-size: 1.2rem;
   color: #007B7B;
-  line-height: 1.2;
+  line-height: 1;
   text-align: justify; 
 }
 #centralg {
