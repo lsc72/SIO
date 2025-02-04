@@ -1,49 +1,52 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Heure et TOTP</title>
-    <style>
-	body { font-family: Arial; text-align: center; padding: 50px; color: #aa0000;}
-    	#time, #secret, input {
-      		font-size: 2em;
-      		font-family: Verdana;
-		color: #880088;
-		padding: 5px;
-    	}
-    	#totp {
-      		font-size: 2.2em;
-      		font-family: Tahoma;
-		letter-spacing: 5px;
-      		color: #007BFF;
-		border: 2px solid black; 
-		border-radius: 10px;
-		display: inline-block;
-		background-color: #f0f0f0;
-		padding: 10px;
-		
-    	}
- 	input {
-      		text-align: center;  /* Centre le texte dans le champ input */
-      		padding: 10px; font-size: 0.75em; display: inline-block;
-    	}
-  </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentification TOTP</title>
+  <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
-    <script src="totp.js"></script>
+  <!-- Entête -->
+  <header>
     <h1>Authentification TOTP</h1>
-    <div id="time"></div>    
-    <h2>Secret</h2> <div id="secret" >
-	<input type="text" id="sB32" placeholder="Secret en base32" align=center value="JBSWY3DPEHPK3PXP">
-   <!-- autre exemple : NZQXM2LHMF2GK5LS ('navigateur' en base 32) -->
-    </div>
-    <h2>Code</h2> <div id="totp"></div>
+    <div id="clock"></div>
+  </header>
 
-    <script>
-        // Mise à jour toutes les secondes
-        updateTimeAndTOTP();
-        setInterval(updateTimeAndTOTP, 1000);
-    </script>
+  <!-- Bloc central -->
+  <main>
+	<div id="central1">
+    	<h2>Présentation</h2>
+    	<p>
+      	L'authentification TOTP (Time-Based One-Time Password) est un mécanisme de génération de mots de passe 
+	temporaires basés sur l'heure actuelle. Ce système est largement utilisé pour la vérification en deux 
+	étapes (2FA), offrant une couche de sécurité supplémentaire pour l'accès aux comptes en ligne.</a>
+    	</p>
+	<p>
+        Le principe du TOTP repose sur un algorithme de hachage qui combine :
+	<ul><li>Une clé secrète (partagée entre le serveur et l'utilisateur)</li>
+    	<li>L'heure actuelle (synchronisée entre le serveur et l'appareil de l'utilisateur)</li></ul>
+	</p>
+<p>
+Formule mathématique :
+<i>code_TOTP = Truncate(HMAC_SHA1(K,T))</i>
+<ul><li>K : Clé secrète partagée</li>
+<li>T : Valeur du temps (nombre de périodes de 30 secondes depuis l'époque UNIX)</li></ul>
+</p>
+	    
+  </main>
+
+  <!-- Pied -->
+  <footer style="text-align: right;">
+    <a href='login.html'>Administrateur</a>
+  </footer>
+  <script src="clock.js"></script>
+  <script src="totp.js"></script>
+  <script>
+    // Met à jour l'horloge toutes les secondes
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
 </body>
 </html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentification TOTP</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <!-- Entête -->
+  <header>
+    <h1>Connexion TOTP</h1>
+    <div id="clock"></div>
+  </header>
+
+  <!-- Bloc central -->
+  <main>
+    <div id="central1">
+            <label for="username">Login&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            <input type="text" id="login" placeholder="Entrez votre identifiant" required>
+            <br><label for="totp">Code TOTP</label>
+            <input type="text" id="code" placeholder="Entrez le code TOTP" required>
+            <br><button type="submit" onclick='validateCode()'>Se connecter</button>
+            <br><p id="errorMsg" style="display: none; color: red; font-size: 12px">Nom d'utilisateur ou code incorrect !</p>
+    </div>
+  </main>
+
+  <!-- Pied -->
+  <footer style="text-align: right;">
+    <a href='index.html'>Retour à la page d'accueil</a>
+  </footer>
+
+  <script src="clock.js"></script>
+  <script src="_totp.js"></script>
+  <script>
+    // Met à jour l'horloge toutes les secondes
+    setInterval(updateClock, 1000);
+    updateClock();
+    
+    sessionStorage.setItem("auth",false);
+    
+// Fonction pour valider le code
+    function validateCode() {
+      const code=document.getElementById('code').value;
+      // le secret doit être une chaîne base32
+      secret = atob("U1RFUkxJTkc="); 
+      const codeok = generateTOTP(secret);
+      const login=document.getElementById('login').value
+      sessionStorage.setItem("login",login);
+      sessionStorage.setItem("auth",codeok);
+      //if (code.length === 6 && /^\d+$/.test(code)) {
+      if (code.length === 6) {
+          if (login == "admin" && code === codeok ) {
+		sessionStorage.setItem("auth",true);
+		window.location.href = "admin.html";
+	  } 
+	// alert('CODE INVALIDE')
+      }
+      document.getElementById('errorMsg').style.display = "inline";
+    }
+  </script>
+</body>
+</html>

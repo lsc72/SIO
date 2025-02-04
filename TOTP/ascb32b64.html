@@ -111,18 +111,15 @@
             const base32Encoded = encodeBase32(input);
 
             // Étape 2 : Encoder en Base64
-            const base64Encoded = encodeBase64(base32Encoded);
+            const base64Encoded = encodeBase64(input);
 
-            // Étape 3 : Décoder le Base64
-            const base64Decoded = decodeBase64(base64Encoded);
 
-            // Étape 4 : Encoder en ROT13
+            // Étape 3 : Encoder en ROT13
             const rot13Encoded = encodeRot13(input);
 
             document.getElementById('result').innerHTML = `
                 <strong>Résultat Base32 :</strong> ${base32Encoded}<br>
                 <strong>Résultat Base64 :</strong> ${base64Encoded}<br>
-                <strong>Base64 Décodé :</strong> ${base64Decoded}<br>
                 <strong>Résultat ROT13 :</strong> ${rot13Encoded}
             `;
         }

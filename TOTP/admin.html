@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentification TOTP</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <!-- Entête -->
+  <header>
+    <h1>Accès restreint</h1>
+    <div id="clock"></div>
+  </header>
+
+  <!-- Bloc central -->
+  <main>
+    <div id="central1">
+<h2>Algorithme TOTP (étape par étape)</h2>
+<ol>
+    <li>Génération de la clé secrète :
+        <ul><li>Clé aléatoire encodée en Base32</li>
+        <li>Exemple : JBSWY3DPEHPK3PXP</li></ul>
+    </li>
+    <li>Calcul de l'horodatage (time step) :
+        <ul><li>Temps UNIX actuel divisé par 30 secondes</li>
+        <li>T = (Current Unix Time) / 30</li></ul>
+
+    <li>Génération du HMAC :
+        <ul><li>Utilisation de l'algorithme HMAC-SHA1, SHA256 ou SHA512</li>
+        <li>HMAC = HMAC-SHA1(secret, T)</li></ul>
+
+    <li>Troncation dynamique :
+        <ul><li>Conversion du HMAC pour obtenir un nombre de 6 chiffres</li>
+        <li>OTP = (HMAC résultat) mod 10^6</li></ul>
+
+    <li>Affichage du code OTP :
+        <ul><li>Le code est valide pour une période de 30 secondes</li>
+    </ol>
+    </div>
+  </main>
+
+  <!-- Pied -->
+  <footer style="text-align: right;">
+    <a href='index.html'>Retour à la page d'accueil</a>
+  </footer>
+
+  <script src="clock.js"></script>
+  <script>
+    // Met à jour l'horloge toutes les secondes
+    setInterval(updateClock, 1000);
+    updateClock();
+    
+    auth=sessionStorage.getItem("auth");
+    if (auth==="true") {} else {window.location.href="index.html";}
+    
+  </script>
+</body>
+</html>
