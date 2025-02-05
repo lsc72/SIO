@@ -1,94 +1,127 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Convertisseur Base32/Base64</title>
+    <title>Encodeur et Decodeur Base32/Base64</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
         }
-        input, button {
-            padding: 10px;
-            margin-top: 10px;
+        .container {
+            max-width: 600px;
+            margin: auto;
         }
-        #output {
-            margin-top: 10px;
-            font-weight: bold;
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-    <h1>Convertisseur Base32/Base64</h1>
+    <div class="container">
+        <h1>Encodeur et Decodeur Base32/Base64</h1>
+        <p>Entrez une chaîne ASCII pour l'encoder en Base32, puis en Base64, et enfin décoder le Base64.</p>
 
-    <div>
-        <h3>Convertir Base32 en Base64</h3>
-        <textarea id="base32Input" rows="4" cols="50" placeholder="Entrez ici une chaîne en Base32" >JBSWY3DPEHPK3PXP</textarea>
-        <br>
-        <button onclick="convertBase32ToBase64()">Convertir en Base64</button>
-        <div id="base64Output"></div>
-    </div>
+        <textarea id="inputText" placeholder="Entrez votre chaîne ici..."></textarea>
+        <button onclick="processString()">Encoder et Décoder</button>
 
-    <div>
-        <h3>Convertir Base64 en Base32</h3>
-        <textarea id="base64Input" rows="4" cols="50" placeholder="Entrez ici une chaîne en Base64"></textarea>
-        <br>
-        <button onclick="convertBase64ToBase32()">Convertir en Base32</button>
-        <div id="base32Output"></div>
+        <div id="result" class="result"></div>
     </div>
 
     <script>
-        function convertBase32ToBase64() {
-            const base32String = document.getElementById('base32Input').value.trim();
-            try {
-                const decodedBase32 = base32Decode(base32String); // Décodage Base32
-                const encodedBase64 = btoa(decodedBase32); // Encodage en Base64
-                document.getElementById('base64Output').textContent = 'Base64: ' + encodedBase64;
-            } catch (e) {
-                document.getElementById('base64Output').textContent = 'Erreur de conversion Base32 vers Base64';
-            }
-        }
-
-        function convertBase64ToBase32() {
-            const base64String = document.getElementById('base64Input').value.trim();
-            try {
-                const decodedBase64 = atob(base64String); // Décodage Base64
-                const encodedBase32 = base32Encode(decodedBase64); // Encodage en Base32
-                document.getElementById('base32Output').textContent = 'Base32: ' + encodedBase32;
-            } catch (e) {
-                document.getElementById('base32Output').textContent = 'Erreur de conversion Base64 vers Base32';
-            }
-        }
-
-        // Fonction de décodage Base32
-        function base32Decode(base32) {
+        function encodeBase32(input) {
             const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-            const base32Chars = Array.from(base32.toUpperCase()).filter(c => alphabet.includes(c));
-            let binString = '';
-            for (let i = 0; i < base32Chars.length; i++) {
-                let val = alphabet.indexOf(base32Chars[i]);
-                binString += val.toString(2).padStart(5, '0');
+            let padding = '=';
+            let output = '';
+            let buffer = 0;
+            let bitsLeft = 0;
+
+            for (const char of input) {
+                buffer = (buffer << 8) | char.charCodeAt(0);
+                bitsLeft += 8;
+                while (bitsLeft >= 5) {
+                    const index = (buffer >> (bitsLeft - 5)) & 31;
+                    output += alphabet[index];
+                    bitsLeft -= 5;
+                }
             }
-            const byteArray = [];
-            for (let i = 0; i < binString.length; i += 8) {
-                byteArray.push(parseInt(binString.slice(i, i + 8), 2));
+
+            if (bitsLeft > 0) {
+                const index = (buffer << (5 - bitsLeft)) & 31;
+                output += alphabet[index];
             }
-            return String.fromCharCode(...byteArray);
+
+            while (output.length % 8 !== 0) {
+                output += padding;
+            }
+
+            return output;
         }
 
-        // Fonction d'encodage Base32
-        function base32Encode(str) {
-            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-            let binString = '';
-            for (let i = 0; i < str.length; i++) {
-                binString += str.charCodeAt(i).toString(2).padStart(8, '0');
+        function encodeBase64(input) {
+            return btoa(input);
+        }
+
+        function decodeBase64(input) {
+            return atob(input);
+        }
+
+        function encodeRot13(input) {
+            return input.replace(/[A-Za-z0-9]/g, (char) => {
+                if (/[A-Za-z]/.test(char)) {
+                    const base = char <= 'Z' ? 65 : 97;
+                    return String.fromCharCode(((char.charCodeAt(0) - base + 13) % 26) + base);
+                } else if (/[0-9]/.test(char)) {
+                    return String.fromCharCode(((char.charCodeAt(0) - 48 + 5) % 10) + 48);
+                }
+                return char;
+            });
+        }
+
+        function processString() {
+            const input = document.getElementById('inputText').value;
+
+            if (!input) {
+                document.getElementById('result').textContent = 'Veuillez entrer une chaîne.';
+                return;
             }
-            let base32 = '';
-            for (let i = 0; i < binString.length; i += 5) {
-                base32 += alphabet[parseInt(binString.slice(i, i + 5), 2)];
-            }
-            return base32;
+
+            // Étape 1 : Encoder en Base32
+            const base32Encoded = encodeBase32(input);
+
+            // Étape 2 : Encoder en Base64
+            const base64Encoded = encodeBase64(input);
+
+
+            // Étape 3 : Encoder en ROT13
+            const rot13Encoded = encodeRot13(input);
+
+            document.getElementById('result').innerHTML = `
+                <strong>Résultat Base32 :</strong> ${base32Encoded}<br>
+                <strong>Résultat Base64 :</strong> ${base64Encoded}<br>
+                <strong>Résultat ROT13 :</strong> ${rot13Encoded}
+            `;
         }
     </script>
 </body>
