@@ -57,7 +57,7 @@ main {
   margin-bottom: 10px;
 }
 
-#central1 p,ul, ol {
+#central1 p,ul,ol {
   font-size: 1.2rem;
   color: #007B7B;
   line-height: 1;
@@ -71,13 +71,17 @@ main {
   line-height: 1;
   text-align: justify; 
 }
-#central1 label{
-  font-size: 1.2rem;
+#central1 label, input {
+  font-size: 2rem;
   font-weight: bold;
   color: #007B7B;
   line-height: 1;
-  text-align: justify; 
+  text-align: justify;
+  width: 200px;
+  border-radius: 5px;
+  text-align: center
 }
+
 #centralg {
   display: flex;
   align-items: flex-start;
@@ -85,6 +89,7 @@ main {
   background: #ffffff;
   gap: 20px;
 }
+
 #centrald {
   display: inline;
   max-width: 800px;
@@ -137,6 +142,13 @@ footer button:hover {
             color: red;
             text-align: center;
             margin-top: 10px;
+        }
+
+        .toggle-button {
+            	margin-left: 10px;
+            	cursor: pointer;
+	    	height: 50px;
+		padding: 5px 10px;
         }
 
 

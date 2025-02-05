@@ -1,82 +1,30 @@
-        // Fonction pour générer un code TOTP
-        function generateTOTP(secret) {
-            const epoch = Math.floor(Date.now() / 1000);
-            const time = Math.floor(epoch / 30);
-            // Implémentation simple de l'algorithme TOTP
-            function sha1(message) {
-                const crypto = window.crypto.subtle;
-                const encoder = new TextEncoder();
-                const data = encoder.encode(message);
-                return crypto.digest('SHA-1', data).then(hash => {
-                    return Array.from(new Uint8Array(hash));
-                });
-            }
-	    function base32Encode(str) {
-            	const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-            	let binString = '';
-            	for (let i = 0; i < str.length; i++) {
-                	binString += str.charCodeAt(i).toString(2).padStart(8, '0');
-            	}
-            	let base32 = '';
-            	for (let i = 0; i < binString.length; i += 5) {
-                	base32 += alphabet[parseInt(binString.slice(i, i + 5), 2)];
-            	}
-            	return base32;
-            }
-            function base32ToUint8Array(base32) {
-                const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-                const bytes = [];
-                let bits = 0;
-                let buffer = 0;
+function base32ToHex(base32) {
+    const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+    let bits = '';
+    let hex = '';
 
-                for (let char of base32) {
-                    buffer = (buffer << 5) | base32Chars.indexOf(char);
-                    bits += 5;
+    for (let i = 0; i < base32.length; i++) {
+        const val = base32Chars.indexOf(base32.charAt(i).toUpperCase());
+        bits += val.toString(2).padStart(5, '0');
+    }
 
-                    if (bits >= 8) {
-                        bytes.push((buffer >> (bits - 8)) & 255);
-                        bits -= 8;
-                    }
-                }
+    for (let i = 0; i + 4 <= bits.length; i += 4) {
+        const chunk = bits.substring(i, i + 4);
+        hex += parseInt(chunk, 2).toString(16);
+    }
 
-                return new Uint8Array(bytes);
-            }
+    return hex;
+}
 
-            function truncate(bytes) {
-                const offset = bytes[bytes.length - 1] & 0xf;
-                return (
-                    ((bytes[offset] & 0x7f) << 24) |
-                    ((bytes[offset + 1] & 0xff) << 16) |
-                    ((bytes[offset + 2] & 0xff) << 8) |
-                    (bytes[offset + 3] & 0xff)
-                );
-            }
+function generateTOTP(secret) {
+    const key = base32ToHex(secret);
+    const epoch = Math.round(new Date().getTime() / 1000.0);
+    const time = Math.floor(epoch / 30).toString(16).padStart(16, '0');
 
-            // Génération du code TOTP
-            const hmacKey = base32ToUint8Array(secret);
-            const message = new Uint8Array(8);
-            const view = new DataView(message.buffer);
-            view.setBigUint64(0, BigInt(time), false);
+    // CryptoJS should be available in your environment
+    const hmac = CryptoJS.HmacSHA1(CryptoJS.enc.Hex.parse(time), CryptoJS.enc.Hex.parse(key));
+    const offset = parseInt(hmac.toString(CryptoJS.enc.Hex).substr(-1), 16);
+    const otp = (parseInt(hmac.toString(CryptoJS.enc.Hex).substr(offset * 2, 8), 16) & 0x7fffffff).toString().slice(-6);
 
-            crypto.subtle.importKey(
-                'raw', 
-                hmacKey, 
-                { name: 'HMAC', hash: 'SHA-1' }, 
-                false, 
-                ['sign']
-            ).then(key => 
-                crypto.subtle.sign('HMAC', key, message)
-            ).then(signature => {
-                const bytes = new Uint8Array(signature);
-                const code = truncate(bytes) % 1000000;
-                document.getElementById('totp').textContent = 
-                    `${code.toString().padStart(6, '0')}`;
-            });
-        }
-
-        // Mise à jour de l'heure et du code TOTP
-        function updateTimeAndTOTP() {
-            const now = new Date();
-            document.getElementById('time').textContent = `${now.toLocaleTimeString()}`;
-            generateTOTP(document.getElementById('sB32').value);
-        }
+    return otp;
+}

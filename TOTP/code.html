@@ -1,49 +1,53 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Heure et TOTP</title>
-    <style>
-	body { font-family: Arial; text-align: center; padding: 50px; color: #aa0000;}
-    	#time, #secret, input {
-      		font-size: 2em;
-      		font-family: Verdana;
-		color: #880088;
-		padding: 5px;
-    	}
-    	#totp {
-      		font-size: 2em;
-      		font-family: Tahoma;
-		letter-spacing: 5px;
-      		color: #007BFF;
-		border: 2px solid black; 
-		border-radius: 10px;
-		display: inline-block;
-		background-color: #f0f0f0;
-		padding: 10px;
-		
-    	}
- 	input {
-      		text-align: center;  /* Centre le texte dans le champ input */
-      		padding: 10px; font-size: 0.75em; display: inline-block;
-    	}
-  </style>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authentification TOTP</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="crypto-js.js"></script>
 </head>
 <body>
-    <script src="totp.js"></script>
+  <!-- Entête -->
+  <header>
     <h1>Authentification TOTP</h1>
-    <div id="time"></div>    
-    <h2>Secret</h2> <div id="secret" >
-	<input type="text" id="sB32" placeholder="Secret en base32" align=center value="JBSWY3DPEHPK3PXP">
-   <!-- autre exemple : NZQXM2LHMF2GK5LS ('navigateur' en base 32) -->
-    </div>
-    <h2>Code</h2> <div id="totp"></div>
+    <div id="clock"></div>
+  </header>
 
-    <script>
-        // Mise à jour toutes les secondes
-        updateTimeAndTOTP();
-        setInterval(updateTimeAndTOTP, 1000);
-    </script>
+  <!-- Bloc central -->
+  <main>
+    <div id="central1">
+            <label>Secret</label>
+            <input type="text" id="secret" placeholder="secret en base 32" value=STERLING style="color:violet;">
+     
+	    <br><br><label>Code&nbsp;&nbsp</label>
+            <input type="text" style="color:darkviolet;" id="code">
+    </div>
+  </main>
+
+  <!-- Pied -->
+  <footer style="text-align: right;">
+    
+  </footer>
+
+  <script src="clock.js"></script>
+  <script src="totp.js"></script>
+  <script>
+    // Met à jour l'horloge et calcule le code toutes les secondes
+    calculCode();
+    setInterval(calculCode, 1000);
+
+//const code = document.getElementById('code').value;
+//      let secret = atob("SUZXR0MzU1U=");    
+//      const codeok = generateTOTP(secret);
+
+    
+// Fonction pour calculer le code
+    function calculCode() {  
+      let secret = document.getElementById("secret").value;
+      document.getElementById("code").value = generateTOTP(secret);
+      updateClock();
+    }
+  </script>
 </body>
 </html>

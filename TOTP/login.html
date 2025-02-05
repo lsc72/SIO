@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Authentification TOTP</title>
   <link rel="stylesheet" href="style.css">
-  
+  <script src="crypto-js.js"></script>
 </head>
 <body>
   <!-- Entête -->
@@ -18,9 +18,9 @@
   <main>
     <div id="central1">
             <label for="username">Login&nbsp;&nbsp;&nbsp;&nbsp;</label>
-            <input type="text" id="login" placeholder="Entrez votre identifiant" required>
+            <input type="text" id="login" placeholder="Entrez votre identifiant" required style="font-size:18px">
             <br><label for="totp">Code TOTP</label>
-            <input type="text" id="code" placeholder="Entrez le code TOTP" required>
+            <input type="text" id="code" placeholder="Entrez le code TOTP" required style="font-size:18px">
             <br><button type="submit" onclick='validateCode()'>Se connecter</button>
             <br><p id="errorMsg" style="display: none; color: red; font-size: 12px">Nom d'utilisateur ou code incorrect !</p>
     </div>
@@ -32,7 +32,7 @@
   </footer>
 
   <script src="clock.js"></script>
-  <script src="_totp.js"></script>
+  <script src="totp.js"></script>
   <script>
     // Met à jour l'horloge toutes les secondes
     setInterval(updateClock, 1000);
