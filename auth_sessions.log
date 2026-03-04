@@ -1,0 +1,500 @@
+Dec 10 16:38:35 server01 sshd[18124]: Accepted password for bob from 192.168.1.25 port 49289 ssh2
+Dec 10 16:38:35 server01 sshd[18124]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 10 16:53:04 server01 sshd[6240]: Accepted password for bob from 172.16.0.14 port 40477 ssh2
+Dec 10 16:53:04 server01 sshd[6240]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 10 17:11:45 db-node sshd[29539]: Accepted publickey for deploy from 172.16.2.48 port 53834 ssh2
+Dec 10 17:11:45 db-node sshd[29539]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 10 17:23:26 bastion sshd[14210]: Accepted publickey for svc-ci from 10.0.0.49 port 25922 ssh2
+Dec 10 17:23:26 bastion sshd[14210]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 10 17:32:32 server01 sshd[30208]: Accepted publickey for chris from 10.0.0.42 port 37202 ssh2
+Dec 10 17:32:32 server01 sshd[30208]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 10 17:52:19 server02 lightdm[4658]: pam_unix(lightdm:session): session opened for user root by (uid=0)
+Dec 10 18:05:22 bastion sshd[41760]: Accepted publickey for svc-ci from 192.168.1.143 port 24307 ssh2
+Dec 10 18:05:22 bastion sshd[41760]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 10 18:07:53 web-01 sshd[11315]: Accepted password for bob from 192.168.1.190 port 25891 ssh2
+Dec 10 18:07:53 web-01 sshd[11315]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 10 18:19:02 server01 sshd[53957]: Accepted publickey for root from 192.168.1.159 port 18570 ssh2
+Dec 10 18:19:02 server01 sshd[53957]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 10 18:26:22 db-node sshd[58078]: Accepted publickey for guest from 192.168.1.89 port 10174 ssh2
+Dec 10 18:26:22 db-node sshd[58078]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 10 18:41:04 web-01 sshd[23823]: Accepted password for bob from 172.16.0.16 port 33367 ssh2
+Dec 10 18:41:04 web-01 sshd[23823]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 10 18:44:53 server02 sshd[10584]: pam_unix(sshd:session): session closed for user devops
+Dec 10 19:00:56 web-01 sshd[63740]: pam_unix(sshd:session): session closed for user root
+Dec 10 19:10:07 bastion sshd[19334]: pam_unix(sshd:session): session opened for user devops by (uid=0)(uid=0)
+Dec 10 19:16:17 web-01 sshd[57150]: pam_unix(sshd:session): session closed for user deploy
+Dec 10 19:34:46 web-01 sshd[39352]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 10 19:35:02 web-01 sshd[39352]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 10 19:54:12 server01 sshd[48066]: pam_unix(sshd:session): session closed for user guest
+Dec 10 19:58:39 db-node sshd[10921]: pam_unix(sshd:session): session closed for user deploy
+Dec 10 20:05:35 bastion sshd[44119]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 10 20:14:07 server02 sshd[22256]: Accepted password for root from 172.16.1.9 port 15456 ssh2
+Dec 10 20:14:07 server02 sshd[22256]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 10 20:22:00 server01 sshd[56437]: Accepted publickey for svc-ci from 172.16.0.19 port 16621 ssh2
+Dec 10 20:22:00 server01 sshd[56437]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 10 20:29:23 web-01 systemd[47505]: pam_unix(systemd:session): session opened for user guest by (uid=0)
+Dec 10 20:30:06 web-01 systemd[47505]: pam_unix(systemd:session): session closed for user guest
+Dec 10 20:44:10 bastion su[27041]: pam_unix(su:session): session opened for user guest by (uid=0)
+Dec 10 20:44:57 bastion su[27041]: pam_unix(su:session): session closed for user guest
+Dec 10 20:55:49 server01 sshd[12656]: Accepted publickey for bob from 192.168.1.25 port 28672 ssh2
+Dec 10 20:55:49 server01 sshd[12656]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 10 21:04:25 server01 su[53054]: pam_unix(su:session): session opened for user chris by (uid=0)
+Dec 10 21:12:34 server02 su[31926]: pam_unix(su:session): session opened for user guest by (uid=0)
+Dec 10 21:12:59 server02 su[31926]: pam_unix(su:session): session closed for user guest
+Dec 10 21:21:42 db-node sshd[27822]: Accepted password for guest from 192.168.1.51 port 20469 ssh2
+Dec 10 21:21:42 db-node sshd[27822]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 10 21:41:33 web-01 sshd[49119]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 10 21:59:45 server02 sshd[63065]: Accepted password for chris from 10.0.0.37 port 40020 ssh2
+Dec 10 21:59:45 server02 sshd[63065]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 10 22:13:36 server01 sshd[16235]: pam_unix(sshd:session): session closed for user root
+Dec 10 22:31:31 bastion sshd[13486]: Accepted publickey for svc-ci from 192.168.1.89 port 26962 ssh2
+Dec 10 22:31:31 bastion sshd[13486]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 10 22:47:12 bastion sshd[710]: Accepted publickey for guest from 10.0.0.39 port 36258 ssh2
+Dec 10 22:47:12 bastion sshd[710]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 10 22:51:48 bastion sshd[57723]: pam_unix(sshd:session): session closed for user bob
+Dec 10 23:10:25 bastion sshd[64577]: Accepted password for root from 172.16.4.41 port 44499 ssh2
+Dec 10 23:10:25 bastion sshd[64577]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 10 23:19:31 server01 sshd[48755]: Accepted publickey for alice from 192.168.1.98 port 40662 ssh2
+Dec 10 23:19:31 server01 sshd[48755]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 10 23:26:32 bastion sshd[32116]: pam_unix(sshd:session): session closed for user deploy
+Dec 10 23:36:03 server01 sshd[21959]: pam_unix(sshd:session): session closed for user alice
+Dec 10 23:50:43 web-01 sshd[7431]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 10 23:50:46 web-01 sshd[7431]: pam_unix(sshd:session): session closed for user chris
+Dec 11 00:01:19 bastion sshd[59011]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 11 00:13:28 web-01 su[63921]: pam_unix(su:session): session opened for user alice by (uid=0)
+Dec 11 00:14:23 server02 lightdm[60687]: pam_unix(lightdm:session): session opened for user svc-ci by (uid=0)
+Dec 11 00:15:14 server02 lightdm[60687]: pam_unix(lightdm:session): session closed for user svc-ci
+Dec 11 00:18:09 db-node sshd[56368]: pam_unix(sshd:session): session opened for user guest by (uid=0)(uid=0)
+Dec 11 00:19:00 db-node sshd[56368]: pam_unix(sshd:session): session closed for user guest
+Dec 11 00:26:00 server02 sshd[43355]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 11 00:26:33 server02 sshd[43355]: pam_unix(sshd:session): session closed for user bob
+Dec 11 00:39:43 web-01 sshd[61653]: Accepted publickey for root from 172.16.4.13 port 64620 ssh2
+Dec 11 00:39:43 web-01 sshd[61653]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 00:41:06 server01 sudo[28579]: pam_unix(sudo:session): session opened for user svc-ci by (uid=0)
+Dec 11 00:41:43 server01 sudo[28579]: pam_unix(sudo:session): session closed for user svc-ci
+Dec 11 00:47:40 bastion sshd[46550]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 11 00:47:45 bastion sshd[46550]: pam_unix(sshd:session): session closed for user devops
+Dec 11 00:59:01 web-01 sshd[43575]: pam_unix(sshd:session): session closed for user chris
+Dec 11 01:10:14 db-node lightdm[19476]: pam_unix(lightdm:session): session opened for user alice by (uid=0)
+Dec 11 01:10:34 db-node lightdm[19476]: pam_unix(lightdm:session): session closed for user alice
+Dec 11 01:24:10 web-01 sshd[20014]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 01:35:14 db-node su[29077]: pam_unix(su:session): session opened for user bob by (uid=0)
+Dec 11 01:35:33 db-node su[29077]: pam_unix(su:session): session closed for user bob
+Dec 11 01:52:54 web-01 sshd[6220]: Accepted password for bob from 192.168.1.69 port 53882 ssh2
+Dec 11 01:52:54 web-01 sshd[6220]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 11 01:54:33 server02 sshd[40160]: pam_unix(sshd:session): session closed for user chris
+Dec 11 02:01:16 db-node sshd[26291]: Accepted password for bob from 172.16.1.43 port 46088 ssh2
+Dec 11 02:01:16 db-node sshd[26291]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 11 02:15:51 server02 systemd[52798]: pam_unix(systemd:session): session opened for user guest by (uid=0)
+Dec 11 02:16:43 server02 systemd[52798]: pam_unix(systemd:session): session closed for user guest
+Dec 11 02:31:47 web-01 sshd[39123]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 11 02:49:05 db-node sshd[29323]: pam_unix(sshd:session): session closed for user alice
+Dec 11 02:58:37 web-01 sshd[41174]: pam_unix(sshd:session): session closed for user bob
+Dec 11 03:06:42 bastion sshd[21052]: Accepted password for chris from 192.168.1.31 port 16179 ssh2
+Dec 11 03:06:42 bastion sshd[21052]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 11 03:14:05 server01 sshd[26812]: Accepted publickey for svc-ci from 192.168.1.166 port 5104 ssh2
+Dec 11 03:14:05 server01 sshd[26812]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 11 03:27:27 web-01 sshd[1380]: Accepted publickey for devops from 10.0.0.5 port 62807 ssh2
+Dec 11 03:27:27 web-01 sshd[1380]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 11 03:41:50 web-01 sshd[48244]: pam_unix(sshd:session): session closed for user bob
+Dec 11 03:42:54 db-node login[43935]: pam_unix(login:session): session opened for user devops by (uid=0)
+Dec 11 04:02:14 server01 sshd[42223]: Accepted publickey for devops from 172.16.4.7 port 31281 ssh2
+Dec 11 04:02:14 server01 sshd[42223]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 11 04:15:15 bastion sshd[29899]: Accepted publickey for svc-ci from 172.16.2.49 port 58672 ssh2
+Dec 11 04:15:15 bastion sshd[29899]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 11 04:23:56 server01 sshd[1370]: Accepted password for root from 192.168.1.68 port 43631 ssh2
+Dec 11 04:23:56 server01 sshd[1370]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 04:25:04 server02 sshd[55099]: pam_unix(sshd:session): session closed for user root
+Dec 11 04:29:03 web-01 sshd[30576]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 04:33:02 server02 login[7184]: pam_unix(login:session): session opened for user root by systemd(uid=0)
+Dec 11 04:33:48 server02 login[7184]: pam_unix(login:session): session closed for user root
+Dec 11 04:39:53 server01 sshd[45360]: Accepted password for bob from 172.16.2.16 port 51649 ssh2
+Dec 11 04:39:53 server01 sshd[45360]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 11 04:59:17 server01 sshd[35013]: pam_unix(sshd:session): session closed for user devops
+Dec 11 04:59:47 db-node su[7016]: pam_unix(su:session): session opened for user devops by (uid=0)
+Dec 11 05:00:34 db-node su[7016]: pam_unix(su:session): session closed for user devops
+Dec 11 05:17:40 bastion sshd[53066]: pam_unix(sshd:session): session closed for user guest
+Dec 11 05:26:54 bastion sshd[54542]: Accepted publickey for chris from 172.16.4.15 port 30567 ssh2
+Dec 11 05:26:54 bastion sshd[54542]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 11 05:46:26 web-01 sshd[24937]: Accepted publickey for svc-ci from 172.16.0.9 port 56792 ssh2
+Dec 11 05:46:26 web-01 sshd[24937]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 11 05:53:45 bastion sshd[22404]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 06:00:21 server01 sshd[47290]: Accepted publickey for devops from 172.16.0.40 port 50711 ssh2
+Dec 11 06:00:21 server01 sshd[47290]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 11 06:17:11 db-node sshd[6198]: Accepted publickey for deploy from 192.168.1.161 port 46360 ssh2
+Dec 11 06:17:11 db-node sshd[6198]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 11 06:33:25 web-01 sshd[22628]: pam_unix(sshd:session): session closed for user devops
+Dec 11 06:43:57 bastion sshd[8007]: pam_unix(sshd:session): session closed for user bob
+Dec 11 06:50:21 server02 systemd[48505]: pam_unix(systemd:session): session opened for user guest by systemd(uid=0)
+Dec 11 06:57:03 bastion sshd[23750]: pam_unix(sshd:session): session closed for user alice
+Dec 11 07:06:29 server01 sshd[36364]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 07:10:04 server01 sshd[18734]: Accepted password for guest from 192.168.1.179 port 23352 ssh2
+Dec 11 07:10:04 server01 sshd[18734]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 11 07:18:46 db-node sshd[53978]: pam_unix(sshd:session): session closed for user chris
+Dec 11 07:20:40 server02 sshd[53259]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 07:34:57 web-01 sshd[51921]: pam_unix(sshd:session): session closed for user bob
+Dec 11 07:49:40 bastion sshd[40799]: Accepted password for root from 172.16.4.49 port 51010 ssh2
+Dec 11 07:49:40 bastion sshd[40799]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 07:58:46 server01 sshd[15819]: pam_unix(sshd:session): session closed for user alice
+Dec 11 08:14:53 bastion sshd[15270]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 08:22:56 bastion sshd[38752]: Accepted password for bob from 192.168.1.12 port 36712 ssh2
+Dec 11 08:22:56 bastion sshd[38752]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 11 08:32:05 server02 sshd[4008]: pam_unix(sshd:session): session opened for user alice by systemd(uid=0)
+Dec 11 08:32:35 server02 sshd[4008]: pam_unix(sshd:session): session closed for user alice
+Dec 11 08:42:32 db-node sshd[32898]: Accepted publickey for guest from 10.0.0.43 port 40216 ssh2
+Dec 11 08:42:32 db-node sshd[32898]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 11 08:53:37 web-01 login[1795]: pam_unix(login:session): session opened for user chris by (uid=0)
+Dec 11 09:02:53 web-01 sshd[50111]: pam_unix(sshd:session): session closed for user alice
+Dec 11 09:12:27 server02 sshd[28666]: pam_unix(sshd:session): session closed for user guest
+Dec 11 09:23:29 server01 systemd[21714]: pam_unix(systemd:session): session opened for user devops by (uid=0)
+Dec 11 09:23:50 server01 systemd[21714]: pam_unix(systemd:session): session closed for user devops
+Dec 11 09:32:10 bastion sshd[63682]: pam_unix(sshd:session): session closed for user devops
+Dec 11 09:46:21 server01 sshd[34076]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 11 09:53:22 bastion sshd[8686]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 09:54:26 web-01 sshd[46616]: pam_unix(sshd:session): session closed for user alice
+Dec 11 09:57:41 server02 sshd[30341]: pam_unix(sshd:session): session closed for user chris
+Dec 11 10:15:08 bastion sshd[54804]: pam_unix(sshd:session): session closed for user guest
+Dec 11 10:28:18 server02 sshd[33408]: pam_unix(sshd:session): session closed for user alice
+Dec 11 10:42:32 bastion sudo[17609]: pam_unix(sudo:session): session opened for user root by systemd(uid=0)
+Dec 11 10:57:51 web-01 sshd[22718]: Accepted password for svc-ci from 192.168.1.187 port 62159 ssh2
+Dec 11 10:57:51 web-01 sshd[22718]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 11 11:06:05 web-01 sshd[15406]: pam_unix(sshd:session): session closed for user devops
+Dec 11 11:19:10 db-node sshd[52030]: pam_unix(sshd:session): session closed for user alice
+Dec 11 11:30:34 server01 sshd[6634]: pam_unix(sshd:session): session closed for user guest
+Dec 11 11:35:55 server01 sshd[51318]: Accepted password for deploy from 172.16.1.27 port 46421 ssh2
+Dec 11 11:35:55 server01 sshd[51318]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 11 11:47:12 web-01 sshd[62630]: Accepted password for svc-ci from 172.16.4.10 port 36480 ssh2
+Dec 11 11:47:12 web-01 sshd[62630]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 11 11:55:17 bastion sshd[49040]: pam_unix(sshd:session): session closed for user chris
+Dec 11 11:58:47 db-node sshd[45582]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 12:08:52 bastion sshd[28325]: pam_unix(sshd:session): session closed for user alice
+Dec 11 12:15:05 server02 sshd[5275]: pam_unix(sshd:session): session closed for user devops
+Dec 11 12:23:05 db-node lightdm[16744]: pam_unix(lightdm:session): session opened for user guest by systemd(uid=0)
+Dec 11 12:41:49 server02 sshd[29049]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 11 12:50:26 db-node sshd[13155]: Accepted publickey for devops from 192.168.1.8 port 16569 ssh2
+Dec 11 12:50:26 db-node sshd[13155]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 11 13:10:08 bastion sshd[19448]: pam_unix(sshd:session): session closed for user root
+Dec 11 13:11:53 web-01 sshd[32653]: Accepted password for deploy from 172.16.1.18 port 53579 ssh2
+Dec 11 13:11:53 web-01 sshd[32653]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 11 13:20:31 server02 sshd[6467]: Accepted publickey for root from 172.16.3.15 port 29913 ssh2
+Dec 11 13:20:31 server02 sshd[6467]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 13:25:05 server01 sshd[21511]: pam_unix(sshd:session): session closed for user devops
+Dec 11 13:37:39 web-01 sudo[59966]: pam_unix(sudo:session): session opened for user deploy by (uid=0)(uid=0)
+Dec 11 13:47:48 bastion sshd[30792]: Accepted publickey for chris from 172.16.2.46 port 64364 ssh2
+Dec 11 13:47:48 bastion sshd[30792]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 11 14:06:54 bastion sshd[51918]: Accepted publickey for devops from 192.168.1.89 port 36188 ssh2
+Dec 11 14:06:54 bastion sshd[51918]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 11 14:15:55 web-01 sshd[53997]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 11 14:35:09 bastion sshd[14607]: Accepted publickey for chris from 172.16.4.29 port 46969 ssh2
+Dec 11 14:35:09 bastion sshd[14607]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 11 14:39:12 server02 sshd[62114]: Accepted password for root from 172.16.0.8 port 8634 ssh2
+Dec 11 14:39:12 server02 sshd[62114]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 14:52:32 db-node sshd[44040]: pam_unix(sshd:session): session closed for user devops
+Dec 11 15:09:19 web-01 sshd[61641]: Accepted publickey for deploy from 172.16.2.13 port 25307 ssh2
+Dec 11 15:09:19 web-01 sshd[61641]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 11 15:17:27 bastion sshd[64386]: Accepted password for svc-ci from 10.0.0.33 port 27116 ssh2
+Dec 11 15:17:27 bastion sshd[64386]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 11 15:33:03 server01 sshd[14000]: Accepted password for root from 172.16.3.14 port 22880 ssh2
+Dec 11 15:33:03 server01 sshd[14000]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 15:52:24 server02 sshd[54482]: Accepted password for bob from 172.16.3.28 port 58020 ssh2
+Dec 11 15:52:24 server02 sshd[54482]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 11 15:52:34 bastion sshd[64818]: Accepted password for alice from 172.16.3.20 port 12459 ssh2
+Dec 11 15:52:34 bastion sshd[64818]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 11 15:57:08 server01 sshd[51872]: Accepted password for bob from 10.0.0.10 port 12443 ssh2
+Dec 11 15:57:08 server01 sshd[51872]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 11 16:11:35 web-01 sshd[48967]: Accepted password for chris from 192.168.1.183 port 52012 ssh2
+Dec 11 16:11:35 web-01 sshd[48967]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 11 16:27:05 web-01 systemd[62058]: pam_unix(systemd:session): session opened for user root by (uid=0)
+Dec 11 16:40:52 db-node sshd[7175]: Accepted password for guest from 10.0.0.39 port 59958 ssh2
+Dec 11 16:40:52 db-node sshd[7175]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 11 16:43:11 server02 sshd[41015]: Accepted publickey for svc-ci from 172.16.1.13 port 35794 ssh2
+Dec 11 16:43:11 server02 sshd[41015]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 11 16:46:39 server01 sshd[42758]: Accepted publickey for bob from 192.168.1.185 port 59225 ssh2
+Dec 11 16:46:39 server01 sshd[42758]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 11 17:02:12 db-node sshd[47915]: pam_unix(sshd:session): session closed for user chris
+Dec 11 17:15:03 server02 sshd[60588]: Accepted publickey for guest from 10.0.0.48 port 55535 ssh2
+Dec 11 17:15:03 server02 sshd[60588]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 11 17:18:25 bastion sshd[36562]: pam_unix(sshd:session): session closed for user root
+Dec 11 17:32:56 server01 sshd[39448]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 17:38:17 db-node sshd[55627]: Accepted publickey for chris from 172.16.3.44 port 37479 ssh2
+Dec 11 17:38:17 db-node sshd[55627]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 11 17:57:57 server02 sshd[55488]: Accepted publickey for root from 10.0.0.16 port 12847 ssh2
+Dec 11 17:57:57 server02 sshd[55488]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 18:09:37 bastion sshd[11988]: pam_unix(sshd:session): session closed for user alice
+Dec 11 18:10:44 server01 sshd[34865]: Accepted publickey for bob from 192.168.1.168 port 30754 ssh2
+Dec 11 18:10:44 server01 sshd[34865]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 11 18:21:27 bastion sshd[39174]: pam_unix(sshd:session): session closed for user chris
+Dec 11 18:23:13 server01 sshd[29139]: pam_unix(sshd:session): session closed for user devops
+Dec 11 18:30:39 web-01 sshd[22721]: pam_unix(sshd:session): session closed for user devops
+Dec 11 18:47:20 web-01 sshd[20312]: Accepted password for root from 192.168.1.156 port 40301 ssh2
+Dec 11 18:47:20 web-01 sshd[20312]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 18:57:42 server02 sshd[50180]: Accepted publickey for deploy from 192.168.1.121 port 8887 ssh2
+Dec 11 18:57:42 server02 sshd[50180]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 11 19:03:46 server02 su[35003]: pam_unix(su:session): session opened for user bob by (uid=0)
+Dec 11 19:04:16 server02 su[35003]: pam_unix(su:session): session closed for user bob
+Dec 11 19:06:30 bastion sshd[28233]: pam_unix(sshd:session): session closed for user devops
+Dec 11 19:17:40 server02 sshd[30252]: Accepted publickey for svc-ci from 192.168.1.177 port 56368 ssh2
+Dec 11 19:17:40 server02 sshd[30252]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 11 19:31:25 web-01 sshd[26036]: pam_unix(sshd:session): session closed for user deploy
+Dec 11 19:34:06 web-01 lightdm[7572]: pam_unix(lightdm:session): session opened for user bob by (uid=0)
+Dec 11 19:34:16 web-01 lightdm[7572]: pam_unix(lightdm:session): session closed for user bob
+Dec 11 19:42:55 server02 sshd[39578]: pam_unix(sshd:session): session closed for user alice
+Dec 11 19:59:51 db-node sshd[49899]: pam_unix(sshd:session): session closed for user guest
+Dec 11 20:05:05 db-node sshd[30831]: pam_unix(sshd:session): session closed for user guest
+Dec 11 20:17:10 web-01 sshd[20442]: Accepted publickey for guest from 10.0.0.21 port 4752 ssh2
+Dec 11 20:17:10 web-01 sshd[20442]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 11 20:19:52 server01 sudo[39033]: pam_unix(sudo:session): session opened for user devops by (uid=0)
+Dec 11 20:20:44 server01 sudo[39033]: pam_unix(sudo:session): session closed for user devops
+Dec 11 20:39:27 server02 sshd[39749]: Accepted publickey for guest from 10.0.0.33 port 30549 ssh2
+Dec 11 20:39:27 server02 sshd[39749]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 11 20:42:24 web-01 lightdm[11408]: pam_unix(lightdm:session): session opened for user root by (uid=0)
+Dec 11 20:43:23 web-01 lightdm[11408]: pam_unix(lightdm:session): session closed for user root
+Dec 11 20:52:08 db-node sshd[50855]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 11 20:54:27 bastion sshd[36666]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 11 20:55:05 bastion sshd[36666]: pam_unix(sshd:session): session closed for user devops
+Dec 11 20:59:21 bastion login[63518]: pam_unix(login:session): session opened for user devops by (uid=0)(uid=0)
+Dec 11 21:00:03 bastion login[63518]: pam_unix(login:session): session closed for user devops
+Dec 11 21:10:38 server02 sshd[46160]: Accepted publickey for chris from 172.16.0.16 port 24736 ssh2
+Dec 11 21:10:38 server02 sshd[46160]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 11 21:16:52 server02 sshd[62206]: Accepted publickey for guest from 192.168.1.69 port 10039 ssh2
+Dec 11 21:16:52 server02 sshd[62206]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 11 21:20:24 web-01 sshd[54830]: pam_unix(sshd:session): session closed for user root
+Dec 11 21:33:20 server02 sshd[11951]: Accepted password for alice from 10.0.0.24 port 27950 ssh2
+Dec 11 21:33:20 server02 sshd[11951]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 11 21:48:34 web-01 sshd[49408]: Accepted publickey for guest from 172.16.0.29 port 16698 ssh2
+Dec 11 21:48:34 web-01 sshd[49408]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 11 21:55:16 bastion sshd[62171]: pam_unix(sshd:session): session closed for user guest
+Dec 11 22:12:30 web-01 sshd[63425]: Accepted publickey for alice from 172.16.3.22 port 40651 ssh2
+Dec 11 22:12:30 web-01 sshd[63425]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 11 22:14:21 db-node sshd[36442]: pam_unix(sshd:session): session closed for user chris
+Dec 11 22:23:44 db-node sshd[9756]: Accepted publickey for devops from 172.16.4.48 port 60694 ssh2
+Dec 11 22:23:44 db-node sshd[9756]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 11 22:35:44 server01 su[3590]: pam_unix(su:session): session opened for user devops by systemd(uid=0)
+Dec 11 22:36:05 server01 su[3590]: pam_unix(su:session): session closed for user devops
+Dec 11 22:39:11 bastion sshd[9117]: pam_unix(sshd:session): session closed for user root
+Dec 11 22:44:00 db-node sshd[40427]: Accepted password for root from 10.0.0.11 port 17796 ssh2
+Dec 11 22:44:00 db-node sshd[40427]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 23:02:48 web-01 sshd[27838]: Accepted password for chris from 192.168.1.75 port 20760 ssh2
+Dec 11 23:02:48 web-01 sshd[27838]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 11 23:17:12 web-01 sshd[4216]: Accepted password for chris from 172.16.1.13 port 36154 ssh2
+Dec 11 23:17:12 web-01 sshd[4216]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 11 23:22:11 bastion sshd[202]: Accepted password for svc-ci from 172.16.0.48 port 28324 ssh2
+Dec 11 23:22:11 bastion sshd[202]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 11 23:40:08 bastion sshd[62582]: Accepted publickey for root from 172.16.4.11 port 31834 ssh2
+Dec 11 23:40:08 bastion sshd[62582]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 11 23:52:57 bastion sshd[1164]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 11 23:56:34 web-01 sshd[49689]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 00:02:37 db-node sshd[31461]: pam_unix(sshd:session): session closed for user alice
+Dec 12 00:18:19 server01 sshd[13311]: Accepted publickey for root from 172.16.4.17 port 3770 ssh2
+Dec 12 00:18:19 server01 sshd[13311]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 12 00:35:59 db-node sshd[31124]: Accepted publickey for deploy from 172.16.2.45 port 43419 ssh2
+Dec 12 00:35:59 db-node sshd[31124]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 12 00:37:41 bastion sshd[8257]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 00:50:57 bastion sshd[32619]: pam_unix(sshd:session): session closed for user guest
+Dec 12 00:53:51 db-node sshd[28320]: Accepted publickey for alice from 192.168.1.118 port 7747 ssh2
+Dec 12 00:53:51 db-node sshd[28320]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 12 01:04:23 db-node sshd[47132]: Accepted password for devops from 172.16.2.13 port 30115 ssh2
+Dec 12 01:04:23 db-node sshd[47132]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 01:16:30 web-01 sshd[18093]: pam_unix(sshd:session): session closed for user root
+Dec 12 01:34:05 server02 sshd[9457]: Accepted publickey for guest from 192.168.1.18 port 5430 ssh2
+Dec 12 01:34:05 server02 sshd[9457]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 12 01:46:31 db-node sshd[2222]: Accepted password for alice from 172.16.4.49 port 25335 ssh2
+Dec 12 01:46:31 db-node sshd[2222]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 12 02:06:11 server02 sshd[24148]: Accepted password for devops from 172.16.1.40 port 19288 ssh2
+Dec 12 02:06:11 server02 sshd[24148]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 02:07:09 server02 sshd[34030]: Accepted publickey for devops from 192.168.1.88 port 51812 ssh2
+Dec 12 02:07:09 server02 sshd[34030]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 02:14:33 web-01 login[45580]: pam_unix(login:session): session opened for user guest by (uid=0)(uid=0)
+Dec 12 02:15:19 web-01 login[45580]: pam_unix(login:session): session closed for user guest
+Dec 12 02:29:49 server01 sshd[63510]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 02:39:48 bastion sshd[46749]: Accepted password for alice from 172.16.0.16 port 15719 ssh2
+Dec 12 02:39:48 bastion sshd[46749]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 12 02:44:37 server02 su[1822]: pam_unix(su:session): session opened for user svc-ci by (uid=0)
+Dec 12 02:44:43 server02 su[1822]: pam_unix(su:session): session closed for user svc-ci
+Dec 12 02:46:56 bastion su[47084]: pam_unix(su:session): session opened for user guest by (uid=0)
+Dec 12 02:47:17 bastion su[47084]: pam_unix(su:session): session closed for user guest
+Dec 12 02:49:32 db-node sshd[44671]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 02:55:49 server02 sshd[33055]: Accepted password for root from 172.16.0.21 port 11052 ssh2
+Dec 12 02:55:49 server02 sshd[33055]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 12 03:06:54 server02 sshd[62194]: pam_unix(sshd:session): session closed for user deploy
+Dec 12 03:25:47 bastion sshd[41061]: Accepted password for deploy from 172.16.0.13 port 43031 ssh2
+Dec 12 03:25:47 bastion sshd[41061]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 12 03:31:42 web-01 sshd[59213]: Accepted password for svc-ci from 172.16.3.34 port 57632 ssh2
+Dec 12 03:31:42 web-01 sshd[59213]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 12 03:51:28 bastion sshd[13915]: pam_unix(sshd:session): session closed for user devops
+Dec 12 04:01:26 bastion sshd[16148]: pam_unix(sshd:session): session closed for user devops
+Dec 12 04:06:54 db-node sshd[31835]: Accepted publickey for guest from 192.168.1.128 port 40782 ssh2
+Dec 12 04:06:54 db-node sshd[31835]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 12 04:18:46 db-node sshd[49950]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 04:27:58 db-node sshd[9332]: Accepted publickey for chris from 192.168.1.102 port 62980 ssh2
+Dec 12 04:27:58 db-node sshd[9332]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 12 04:36:31 server02 sshd[61294]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 04:54:10 db-node su[57711]: pam_unix(su:session): session opened for user deploy by (uid=0)
+Dec 12 05:01:35 web-01 login[3288]: pam_unix(login:session): session opened for user root by systemd(uid=0)
+Dec 12 05:01:36 web-01 login[3288]: pam_unix(login:session): session closed for user root
+Dec 12 05:05:20 db-node sshd[57932]: Accepted publickey for deploy from 172.16.3.3 port 27451 ssh2
+Dec 12 05:05:20 db-node sshd[57932]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 12 05:07:09 web-01 sshd[12856]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 05:26:00 bastion sshd[44690]: Accepted publickey for chris from 192.168.1.3 port 26838 ssh2
+Dec 12 05:26:00 bastion sshd[44690]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 12 05:45:07 bastion sshd[13145]: Accepted publickey for devops from 10.0.0.25 port 3574 ssh2
+Dec 12 05:45:07 bastion sshd[13145]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 06:01:22 web-01 sshd[9860]: Accepted publickey for alice from 172.16.4.40 port 41202 ssh2
+Dec 12 06:01:22 web-01 sshd[9860]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 12 06:11:39 web-01 sshd[33347]: Accepted publickey for guest from 192.168.1.197 port 54484 ssh2
+Dec 12 06:11:39 web-01 sshd[33347]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 12 06:15:28 db-node sshd[20263]: pam_unix(sshd:session): session closed for user root
+Dec 12 06:35:17 web-01 sshd[47377]: pam_unix(sshd:session): session closed for user root
+Dec 12 06:48:20 server02 sshd[15972]: pam_unix(sshd:session): session closed for user root
+Dec 12 07:02:42 server02 sshd[45352]: pam_unix(sshd:session): session closed for user bob
+Dec 12 07:18:52 server01 sshd[9149]: pam_unix(sshd:session): session closed for user bob
+Dec 12 07:29:39 server02 su[59876]: pam_unix(su:session): session opened for user svc-ci by systemd(uid=0)
+Dec 12 07:29:52 server02 su[59876]: pam_unix(su:session): session closed for user svc-ci
+Dec 12 07:38:08 bastion sshd[19662]: pam_unix(sshd:session): session closed for user bob
+Dec 12 07:54:54 bastion sshd[22959]: pam_unix(sshd:session): session closed for user deploy
+Dec 12 08:07:56 db-node login[62661]: pam_unix(login:session): session opened for user alice by (uid=0)
+Dec 12 08:08:25 db-node login[62661]: pam_unix(login:session): session closed for user alice
+Dec 12 08:16:46 db-node sshd[13342]: pam_unix(sshd:session): session closed for user deploy
+Dec 12 08:25:01 server02 sshd[43998]: pam_unix(sshd:session): session closed for user bob
+Dec 12 08:41:13 server01 lightdm[50612]: pam_unix(lightdm:session): session opened for user alice by root(uid=0)
+Dec 12 08:42:10 server01 lightdm[50612]: pam_unix(lightdm:session): session closed for user alice
+Dec 12 08:57:32 db-node sshd[13171]: Accepted password for deploy from 192.168.1.100 port 43353 ssh2
+Dec 12 08:57:32 db-node sshd[13171]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 12 09:17:12 server02 sudo[48510]: pam_unix(sudo:session): session opened for user root by (uid=0)
+Dec 12 09:30:50 db-node sshd[61481]: pam_unix(sshd:session): session closed for user deploy
+Dec 12 09:34:34 bastion sshd[29876]: pam_unix(sshd:session): session closed for user guest
+Dec 12 09:41:13 server01 sshd[10749]: Accepted publickey for guest from 172.16.2.27 port 13226 ssh2
+Dec 12 09:41:13 server01 sshd[10749]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 12 09:51:22 web-01 sshd[49729]: pam_unix(sshd:session): session closed for user bob
+Dec 12 10:05:17 db-node sshd[21591]: Accepted password for chris from 172.16.2.2 port 7275 ssh2
+Dec 12 10:05:17 db-node sshd[21591]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 12 10:21:39 bastion sshd[547]: pam_unix(sshd:session): session closed for user deploy
+Dec 12 10:32:59 bastion sshd[47474]: pam_unix(sshd:session): session closed for user root
+Dec 12 10:35:11 server01 su[20206]: pam_unix(su:session): session opened for user alice by (uid=0)
+Dec 12 10:35:52 server01 su[20206]: pam_unix(su:session): session closed for user alice
+Dec 12 10:45:20 bastion sshd[14573]: pam_unix(sshd:session): session closed for user bob
+Dec 12 10:58:10 db-node sshd[36094]: pam_unix(sshd:session): session closed for user guest
+Dec 12 11:01:02 web-01 sshd[34714]: Accepted password for svc-ci from 172.16.4.33 port 37997 ssh2
+Dec 12 11:01:02 web-01 sshd[34714]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 12 11:20:39 web-01 sshd[10883]: Accepted publickey for svc-ci from 192.168.1.13 port 45607 ssh2
+Dec 12 11:20:39 web-01 sshd[10883]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 12 11:23:50 web-01 sshd[53098]: pam_unix(sshd:session): session closed for user root
+Dec 12 11:43:09 server01 sudo[30402]: pam_unix(sudo:session): session opened for user deploy by (uid=0)
+Dec 12 11:43:12 server01 sudo[30402]: pam_unix(sudo:session): session closed for user deploy
+Dec 12 11:57:41 bastion sshd[4278]: Accepted publickey for root from 172.16.4.42 port 31961 ssh2
+Dec 12 11:57:41 bastion sshd[4278]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 12 12:03:54 server02 sshd[64216]: pam_unix(sshd:session): session closed for user devops
+Dec 12 12:16:52 db-node sshd[44843]: pam_unix(sshd:session): session opened for user alice by systemd(uid=0)
+Dec 12 12:17:39 db-node sshd[44843]: pam_unix(sshd:session): session closed for user alice
+Dec 12 12:24:33 server01 sshd[64226]: pam_unix(sshd:session): session closed for user deploy
+Dec 12 12:42:47 db-node sshd[16320]: Accepted password for guest from 192.168.1.33 port 19088 ssh2
+Dec 12 12:42:47 db-node sshd[16320]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 12 12:43:57 db-node sshd[50304]: Accepted password for root from 192.168.1.59 port 5433 ssh2
+Dec 12 12:43:57 db-node sshd[50304]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 12 12:59:16 web-01 sshd[46190]: pam_unix(sshd:session): session closed for user root
+Dec 12 13:07:20 web-01 sshd[49539]: Accepted publickey for root from 172.16.0.13 port 19981 ssh2
+Dec 12 13:07:20 web-01 sshd[49539]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 12 13:27:07 web-01 sshd[53733]: Accepted password for svc-ci from 192.168.1.108 port 58450 ssh2
+Dec 12 13:27:07 web-01 sshd[53733]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 12 13:41:18 bastion sshd[4094]: Accepted publickey for alice from 172.16.0.40 port 33505 ssh2
+Dec 12 13:41:18 bastion sshd[4094]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 12 13:54:23 web-01 sshd[45733]: Accepted publickey for devops from 192.168.1.30 port 20677 ssh2
+Dec 12 13:54:23 web-01 sshd[45733]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 14:02:41 server02 sshd[56299]: pam_unix(sshd:session): session closed for user alice
+Dec 12 14:16:59 web-01 sshd[8887]: Accepted password for devops from 192.168.1.84 port 14349 ssh2
+Dec 12 14:16:59 web-01 sshd[8887]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 14:32:25 bastion sshd[35203]: pam_unix(sshd:session): session closed for user bob
+Dec 12 14:33:50 server01 systemd[52833]: pam_unix(systemd:session): session opened for user bob by (uid=0)
+Dec 12 14:34:26 server02 sshd[63150]: pam_unix(sshd:session): session closed for user chris
+Dec 12 14:41:29 db-node sshd[36281]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 14:53:49 bastion login[23669]: pam_unix(login:session): session opened for user guest by (uid=0)
+Dec 12 15:04:49 server02 sshd[20607]: Accepted password for devops from 172.16.0.44 port 57652 ssh2
+Dec 12 15:04:49 server02 sshd[20607]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 15:05:27 bastion sshd[61360]: Accepted publickey for devops from 192.168.1.32 port 13881 ssh2
+Dec 12 15:05:27 bastion sshd[61360]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 15:24:58 server02 sshd[36186]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 15:41:47 db-node sshd[48122]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 15:48:08 web-01 sshd[62833]: Accepted password for root from 172.16.3.41 port 56513 ssh2
+Dec 12 15:48:08 web-01 sshd[62833]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 12 15:48:26 db-node sshd[55317]: Accepted publickey for bob from 172.16.2.22 port 10921 ssh2
+Dec 12 15:48:26 db-node sshd[55317]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 12 16:01:15 server01 sshd[41894]: pam_unix(sshd:session): session closed for user guest
+Dec 12 16:15:22 server01 sshd[34795]: pam_unix(sshd:session): session opened for user deploy by systemd(uid=0)
+Dec 12 16:21:34 server01 sshd[34466]: pam_unix(sshd:session): session closed for user alice
+Dec 12 16:33:44 bastion sshd[5278]: Accepted password for svc-ci from 192.168.1.189 port 38051 ssh2
+Dec 12 16:33:44 bastion sshd[5278]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 12 16:44:03 server01 sshd[56344]: Accepted publickey for root from 192.168.1.161 port 25879 ssh2
+Dec 12 16:44:03 server01 sshd[56344]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 12 16:46:02 server01 sshd[11331]: pam_unix(sshd:session): session closed for user chris
+Dec 12 16:57:25 web-01 sshd[58741]: pam_unix(sshd:session): session opened for user root by (uid=0)(uid=0)
+Dec 12 16:58:25 web-01 sshd[58741]: pam_unix(sshd:session): session closed for user root
+Dec 12 17:00:02 bastion sshd[37030]: Accepted password for root from 172.16.4.39 port 56757 ssh2
+Dec 12 17:00:02 bastion sshd[37030]: pam_unix(sshd:session): session opened for user root by (uid=0)
+Dec 12 17:05:02 db-node sshd[19713]: pam_unix(sshd:session): session opened for user alice by (uid=0)(uid=0)
+Dec 12 17:05:50 db-node sshd[19713]: pam_unix(sshd:session): session closed for user alice
+Dec 12 17:09:53 server01 sshd[48954]: Accepted password for svc-ci from 192.168.1.4 port 29669 ssh2
+Dec 12 17:09:53 server01 sshd[48954]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 12 17:21:35 web-01 sshd[62677]: Accepted publickey for devops from 10.0.0.17 port 42581 ssh2
+Dec 12 17:21:35 web-01 sshd[62677]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 17:38:24 server02 sshd[36343]: pam_unix(sshd:session): session closed for user devops
+Dec 12 17:51:27 server01 sshd[19457]: Accepted password for bob from 10.0.0.44 port 18585 ssh2
+Dec 12 17:51:27 server01 sshd[19457]: pam_unix(sshd:session): session opened for user bob by (uid=0)
+Dec 12 18:04:49 bastion sshd[7082]: pam_unix(sshd:session): session closed for user chris
+Dec 12 18:14:06 server01 sshd[5821]: pam_unix(sshd:session): session closed for user alice
+Dec 12 18:28:06 server01 sshd[5973]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 18:41:19 server01 sshd[27219]: pam_unix(sshd:session): session closed for user devops
+Dec 12 18:49:41 web-01 sshd[11213]: Accepted publickey for devops from 192.168.1.25 port 18647 ssh2
+Dec 12 18:49:41 web-01 sshd[11213]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 18:54:44 server01 sshd[28586]: pam_unix(sshd:session): session closed for user deploy
+Dec 12 19:07:08 bastion sshd[47344]: Accepted password for guest from 192.168.1.188 port 8034 ssh2
+Dec 12 19:07:08 bastion sshd[47344]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 12 19:20:43 bastion sudo[24996]: pam_unix(sudo:session): session opened for user svc-ci by (uid=0)
+Dec 12 19:21:22 bastion sudo[24996]: pam_unix(sudo:session): session closed for user svc-ci
+Dec 12 19:27:39 db-node sshd[11741]: pam_unix(sshd:session): session closed for user devops
+Dec 12 19:44:29 web-01 sshd[21457]: Accepted password for devops from 172.16.3.30 port 52526 ssh2
+Dec 12 19:44:29 web-01 sshd[21457]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 20:03:48 server02 sudo[35858]: pam_unix(sudo:session): session opened for user alice by (uid=0)
+Dec 12 20:04:07 server02 sudo[35858]: pam_unix(sudo:session): session closed for user alice
+Dec 12 20:06:14 db-node sshd[32822]: pam_unix(sshd:session): session closed for user alice
+Dec 12 20:20:45 db-node sshd[29530]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 12 20:21:36 db-node sshd[29530]: pam_unix(sshd:session): session closed for user guest
+Dec 12 20:33:06 web-01 sshd[41923]: pam_unix(sshd:session): session closed for user chris
+Dec 12 20:45:18 server02 lightdm[40252]: pam_unix(lightdm:session): session opened for user root by (uid=0)
+Dec 12 20:45:25 server02 lightdm[40252]: pam_unix(lightdm:session): session closed for user root
+Dec 12 20:54:12 server02 sshd[49045]: pam_unix(sshd:session): session closed for user bob
+Dec 12 21:11:21 server02 login[1709]: pam_unix(login:session): session opened for user guest by (uid=0)
+Dec 12 21:12:08 server02 login[1709]: pam_unix(login:session): session closed for user guest
+Dec 12 21:16:16 bastion sshd[22583]: Accepted password for guest from 172.16.0.22 port 32673 ssh2
+Dec 12 21:16:16 bastion sshd[22583]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 12 21:31:18 db-node sshd[4502]: Accepted publickey for deploy from 172.16.3.26 port 47605 ssh2
+Dec 12 21:31:18 db-node sshd[4502]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 12 21:35:06 server02 sshd[16085]: pam_unix(sshd:session): session closed for user alice
+Dec 12 21:50:57 server02 sshd[41371]: pam_unix(sshd:session): session closed for user alice
+Dec 12 21:52:01 web-01 sshd[29563]: Accepted publickey for devops from 10.0.0.4 port 47209 ssh2
+Dec 12 21:52:01 web-01 sshd[29563]: pam_unix(sshd:session): session opened for user devops by (uid=0)
+Dec 12 21:54:14 web-01 sshd[52496]: pam_unix(sshd:session): session closed for user alice
+Dec 12 22:03:16 db-node sshd[63402]: pam_unix(sshd:session): session closed for user svc-ci
+Dec 12 22:15:13 bastion sshd[40559]: pam_unix(sshd:session): session closed for user alice
+Dec 12 22:19:52 bastion sshd[15735]: pam_unix(sshd:session): session closed for user deploy
+Dec 12 22:37:23 db-node sshd[39187]: pam_unix(sshd:session): session closed for user alice
+Dec 12 22:55:48 server02 sshd[11035]: Accepted publickey for guest from 192.168.1.25 port 13285 ssh2
+Dec 12 22:55:48 server02 sshd[11035]: pam_unix(sshd:session): session opened for user guest by (uid=0)
+Dec 12 22:57:42 bastion sshd[31859]: pam_unix(sshd:session): session opened for user alice by (uid=0)(uid=0)
+Dec 12 22:58:14 bastion sshd[31859]: pam_unix(sshd:session): session closed for user alice
+Dec 12 23:11:58 db-node sshd[11061]: Accepted password for chris from 172.16.3.19 port 50900 ssh2
+Dec 12 23:11:58 db-node sshd[11061]: pam_unix(sshd:session): session opened for user chris by (uid=0)
+Dec 12 23:21:25 server02 sshd[19018]: pam_unix(sshd:session): session closed for user alice
+Dec 12 23:38:24 web-01 sudo[7519]: pam_unix(sudo:session): session opened for user chris by systemd(uid=0)
+Dec 12 23:39:13 web-01 sudo[7519]: pam_unix(sudo:session): session closed for user chris
+Dec 12 23:39:54 db-node sshd[14422]: pam_unix(sshd:session): session closed for user devops
+Dec 12 23:48:25 bastion sshd[29573]: Accepted password for deploy from 172.16.4.5 port 54549 ssh2
+Dec 12 23:48:25 bastion sshd[29573]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 12 23:56:35 server02 sshd[38630]: Accepted password for svc-ci from 192.168.1.38 port 41404 ssh2
+Dec 12 23:56:35 server02 sshd[38630]: pam_unix(sshd:session): session opened for user svc-ci by (uid=0)
+Dec 13 00:03:43 server01 sshd[23091]: pam_unix(sshd:session): session closed for user deploy
+Dec 13 00:13:40 web-01 sshd[62516]: pam_unix(sshd:session): session closed for user chris
+Dec 13 00:15:46 bastion sshd[8415]: Accepted password for alice from 192.168.1.28 port 47645 ssh2
+Dec 13 00:15:46 bastion sshd[8415]: pam_unix(sshd:session): session opened for user alice by (uid=0)
+Dec 13 00:29:15 db-node sshd[37942]: Accepted password for deploy from 192.168.1.146 port 30645 ssh2
+Dec 13 00:29:15 db-node sshd[37942]: pam_unix(sshd:session): session opened for user deploy by (uid=0)
+Dec 13 00:43:05 web-01 sshd[18333]: pam_unix(sshd:session): session closed for user svc-ci
