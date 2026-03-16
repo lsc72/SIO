@@ -1,0 +1,567 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 1rem;
+      }
+      ol,
+      ul {
+        margin-bottom: 0in;
+      }
+      table {
+        margin-top: 1rem;
+        border: 1px solid gray;
+        width: 7in;
+        border-collapse: collapse;
+      }
+
+      table > thead > tr > .openTableTextBox__table-header-data {
+        text-align: center;
+        margin-top: 6pt;
+        margin-right: 0in;
+        margin-bottom: 6pt;
+        margin-left: 0in;
+        text-align: center;
+        line-height: 115%;
+        page-break-after: avoid;
+        font-size: 10pt;
+        font-family: "Arial", sans-serif;
+        font-weight: bold;
+        background: #dbe5f1;
+        padding: 0.5rem;
+      }
+      .openTableTextBox__answerText
+        table
+        > thead
+        > tr
+        > .openTableTextBox__table-header-data {
+        background: #f2dbdb !important;
+      }
+      .openTextBox__textArea-container {
+        margin-top: 6pt;
+        margin-right: 0in;
+        margin-bottom: 6pt;
+        font-size: 10pt;
+        font-family: "Arial", sans-serif;
+        width: 50%;
+      }
+      .openTableTextBox__fieldset {
+        padding: 5px;
+      }
+      td {
+        margin-top: 3pt;
+        margin-right: 0in;
+        margin-bottom: 3pt;
+        margin-left: 0in;
+        font-size: 10pt;
+        font-family: "Arial", sans-serif;
+        width: 98.85pt;
+        border: solid windowtext 1pt;
+        border-top: none;
+        padding: 0.7pt 5.75pt 0.7pt 5.75pt;
+      }
+      textarea {
+        width: 100%;
+      }
+      .answergray {
+        padding: 0.2rem;
+      }
+
+      .openTableTextBox__widget {
+        margin-top: 6pt;
+        margin-right: 0in;
+        margin-bottom: 6pt;
+        margin-left: 0.25in;
+      }
+
+      .show-answer,
+      .hide-answer {
+        padding: 0.5rem 1rem;
+        background-color: #3d692b;
+        color: #fff;
+        border: 0px;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      .openTextBoxController__button-container {
+        display: flex;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .openTextBoxController__button-container .btn-text {
+        margin: 10px;
+      }
+
+      .btn-text {
+        border: 0px;
+        padding: 0.5rem 1rem;
+        background-color: #3d692b;
+        color: #fff;
+        border-radius: 0;
+        cursor: pointer;
+      }
+
+      .u-display-none {
+        display: none;
+      }
+      .openTextBox__postText, openTableTextBox__postText {
+        margin-top: 0.5rem;
+      }
+      .edit-comment {
+        display: none;
+      }
+      .js-heading-inner {
+        display: none;
+      }
+      .block__title-inner,
+      .article__title-inner {
+        display: block;
+        font-size: 1.5em;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        font-weight: bold;
+      }
+      h2{
+        font-size: 1.25em;
+      }
+      h3{
+        font-size: 1.125em;
+      }
+      .table
+        > .table-inner
+        > .table-wrapper
+        > .table-widget
+        > table
+        > tbody
+        > tr
+        > th {
+        border: solid windowtext 1pt;
+      }
+      table tbody tr th, table thead tr th{
+        border: solid windowtext 1pt;
+        background-color: #d6d8dc;
+      }
+      .openTableTextBox__answerText
+        table
+        > thead
+        > tr
+        > .openTableTextBox__table-header-data {
+        background: #f2dbdb !important;
+      }
+      .command-output > .table-inner > .table-wrapper > .table-widget > table,
+      .command-output
+        > .table-inner
+        > .table-wrapper
+        > .table-widget
+        > table
+        > tbody
+        > tr
+        > td,
+      .command-output
+        > .table-inner
+        > .table-wrapper
+        > .table-widget
+        > table
+        > tbody
+        > tr
+        > th {
+        border: none !important;
+        text-align: right !important;
+      }
+      .simple-table > .table-inner > .table-wrapper{
+        margin-left: 1.5rem;
+      }
+      .openTextBox__widget {
+        margin-left: 1.5rem;
+      }
+      img {
+        width: 30%;
+        height: auto;
+        margin-top: 1rem;
+        margin-left: 3rem;
+      }
+      .answergray {
+        background-color: #ccc;
+      }
+      .openTableTextBox__widget > .answergray {
+        background-color: #fff !important;
+      }
+      li > ul,ol > li{
+        margin-left: 0px !important;
+      }
+      img {
+        width: 30%;
+        height: auto;
+        margin-top: 1rem;
+        margin-left: 3rem;
+      }
+      
+      .component__title{
+        font-family: inherit;
+        font-size: 1.65em;
+        font-weight: 600;
+        line-height: 1.5;
+      }
+
+      .component__body {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+
+      .accessibility-completion-indicator{
+        display: none;
+      }
+
+      .check__hidden {
+        display: none;
+      }
+
+      .check__button {
+        border: none;
+        border-radius: 6px !important;
+        background-color: #6abf4b;
+        color: #fff;
+        min-width: 100px;
+        margin: 0.625rem 0;
+        padding: 0.7rem;
+      }
+
+      .check__widget .check__solution .DevConfigGray {
+        background-color: rgb(214,216,220);
+        font-weight: bold;
+      }
+
+      .check-inner .check__widget .check__solution .DevConfigs {
+        margin: 0px;
+        line-height: 115%;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .check__solution  {
+        line-height: 1.5;
+      }
+      .mcq__inner .mcq__widget .mcq__widget-inner {
+        margin-block: 1rem;
+      }
+      .mcq__inner .mcq__widget .mcq__item {
+        display: flex;
+        gap: 0.2rem;
+      }
+      .mcq__inner .mcq__widget .mcq__item .mcq__item-label .mcq__item-text .screenReader-position-text{
+        display: none;
+      }
+      .opentabletextbox-inner .opentabletextBox__widget .openTableTextBox__answerText.answergray {
+        background-color: transparent;
+      }
+      .openTextBox__inner .openTextBox__widget .answergray.is-graphic-in-openTextBox{
+        background-color: transparent;
+      }
+      .openTextBox__inner .openTextBox__widget .answergray.is-graphic-in-openTextBox img{
+        margin-block: 1rem;
+        margin-left: initial;
+      }
+      .component__content .component__body-inner .pageTracer-h4-title-hide {
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        font-size: 0px;
+        color: rgb(var(--neutral-2));
+        font-weight: normal;
+      }
+      .table-inner .table__widget table tr.TableHeading th, .table-inner .table__widget table tr.TableHeading td, .table-inner .table__widget table tr td.TableHeading, .opentabletextbox-table thead tr.TableHeading th, .opentabletextbox-table tbody tr.TableHeading td, .opentabletextbox-table tbody tr td.TableHeading {
+        background-color: #d6d8dc;
+        text-align: center;
+        font-weight: bold;
+      }
+      .component__content .component__body-inner .CMD, .component__content .component__body-inner .CMDOutput, .component__content .component__body-inner .CMDOutput__table{
+        margin-top: 4px;
+        margin-inline-end: 0px;
+        margin-bottom: 4px;
+        margin-inline-start: 30px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      [dir="rtl"] .component__content .component__body-inner .CMDOutput__table span {
+        direction: ltr;
+        display: inline-block;
+      }
+      .openTextBox__inner .openTextBox__widget .CMD, .openTextBox__inner .openTextBox__widget .CMDOutput{
+        margin-top: 4px;
+        margin-inline-end: 0px;
+        margin-bottom: 4px;
+        font-family: "Courier New", Courier, monospace;
+      }
+      .openTextBox__inner .openTextBox__widget .DnTbold, .openTextBox__inner .openTextBox__widget .BodyTextL25Bold, .component__content .component__body-inner .BodyTextL25Bold, .component__content .component__body-inner .DnTbold, .table-inner .table__widget table tr .DnTbold {
+        font-weight: bold;
+      }
+      .component__content .component__body-inner .SubStepNum {
+        text-indent: -25.5px;
+        margin-inline-start: 50px;
+      }
+      .component__content .component__body-inner .BodyTextL50 {
+        margin-inline-start: 30px;
+      }
+      .component__content .component__body-inner .Bulletlevel1 {
+        text-indent: -19px;
+        margin-inline-start: 48px;
+      }
+      .component__content .component__body-inner .Bulletlevel2 {
+          text-indent: -19px;
+          margin-inline-start: 72px;
+      }
+      .openTextBox__inner .openTextBox__widget .ReflectionQ, .component__content .component__body-inner .SubStepAlpha {
+          text-indent: -25.5px;
+          margin-inline-start: 30px;
+      }
+    </style>
+
+</head><body><!---->
+            <div class="article ad856cab-52d2-44d0-a50d-4ec8bc5ba715 remove-padding-top remove-padding-bottom is-complete ">
+                <div class="article__inner">
+                <div class=" no-adaptive-scroll">
+                    <!--?lit$456750276$-->
+                        <div class=""> 
+                            <base-view type="article" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="article__header-wrapper remove-padding-top remove-padding-bottom ">
+        <div class="article__header ">
+              <div class="article__header-inner ">
+                  
+                    <!--?lit$456750276$--> <div class=" article__title ">
+                      <!--?lit$456750276$--><heading-view aria-hidden="true" id="ad856cab-52d2-44d0-a50d-4ec8bc5ba715-heading-view" headingtitle="Atelier : Générer et utiliser une signature numérique" modelid="ad856cab-52d2-44d0-a50d-4ec8bc5ba715" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="js-heading is-complete">
+        <div class="js-heading-inner" role="heading" id="article-heading" aria-level="2">
+        <span class="aria-label"> <!--?lit$456750276$-->Complet &nbsp;<!--?lit$456750276$-->Atelier : Générer et utiliser une signature numérique</span>
+        </div>
+      </div>
+    </heading-view>
+                        <div tabindex="0" role="heading" class="article__title-inner " aria-level="2">
+                        <span class="accessibility-completion-indicator"><!--?lit$456750276$-->Complet </span>
+                        <!--?lit$456750276$-->Atelier : Générer et utiliser une signature numérique</div>
+                      </div>
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                            <div class="block__container " style="">
+                                <!--?lit$456750276$--><!---->
+                                    <block-view modelid="4465d7e6-bd41-4c5a-8aef-871d0253af72" style="width: 50%;" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme" sgpulse-type="block"><!---->
+                
+                <div data-socialgoodpulse-id="4465d7e6-bd41-4c5a-8aef-871d0253af72" class="4465d7e6-bd41-4c5a-8aef-871d0253af72 block  is-complete">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="4465d7e6-bd41-4c5a-8aef-871d0253af72" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper  ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$456750276$--><!----><text-view modelid="d2f90102-55a9-409d-8045-a2bfc624475a" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="d2f90102-55a9-409d-8045-a2bfc624475a" class="component text d2f90102-55a9-409d-8045-a2bfc624475a  is-full is-complete  ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$456750276$--><h2><span lang="FR">Objectifs</span></h2> <p class="Bulletlevel1"><span lang="FR" style="font-size:7.0pt;font-family:Webdings">=</span><span>&nbsp;&nbsp;</span><span lang="FR">Utilisez OpenSSL pour générer une signature numérique.</span></p> <p class="Bulletlevel1"><span lang="FR" style="font-size:7.0pt;font-family:Webdings">=</span><span>&nbsp;&nbsp;</span><span lang="FR">Signer un document avec la signature numérique.</span></p> <p class="Bulletlevel1"><span lang="FR" style="font-size:7.0pt;font-family:Webdings">=</span><span>&nbsp;&nbsp;</span><span lang="FR">Vérifier qu'un document signé a été modifié.</span></p> <h2><span lang="FR">Contexte/Scénario</span></h2> <p class="BodyTextL25"><span lang="FR">Une signature numérique est une technique mathématique utilisée pour valider l'authenticité et l'intégrité d'un message numérique. L'objectif d'une signature numérique est d'empêcher la falsification et l'usurpation d'identité dans les communications numériques. Dans de nombreux pays, comme aux États-Unis, les signatures numériques ont le même poids juridique que les signatures traditionnellement apposées aux documents papier. Il arrive même que le gouvernement américain publie des versions électroniques de ses budgets, lois et projets de loi dotées de signatures numériques.</span></p> <p class="BodyTextL25"><span lang="FR">Un algorithme de signature numérique consiste en un processus de création et de vérification de la signature. L'utilisateur A génère la signature numérique et l'utilisateur B vérifie la signature à l'aide du processus de vérification. Le signataire et le vérificateur ont tous deux une clé publique et une clé privée qu'ils utilisent pour terminer chaque processus. </span></p> <p class="BodyTextL25"><span lang="FR">Dans ce TP, vous allez utiliser la boîte à outils OpenSSL pour générer une signature numérique. Vous générerez ensuite un document, le signerez avec la signature numérique, puis validerez l'authenticité et l'intégrité du document. Enfin, vous modifiez le document, puis vous confirmez que le document n'est plus authentique, car son intégrité a été compromise.</span></p> <h2><span lang="FR">Ressources requises</span></h2> <p class="BodyTextL25"><span lang="FR">PC avec <b>CSE-LABVM</b> installé dans VirtualBox</span></p> <h2><span lang="FR">Instructions</span></h2> <h2><span lang="FR">Partie&nbsp;1&nbsp;: </span><span lang="FR">Ouvrez une fenêtre de terminal dans CSE-LABVM.</span></h2> <p class="SubStepAlpha"><span lang="FR">a.<span>&nbsp;&nbsp;</span></span><span lang="FR">Lancer le <b>CSE-LABVM</b>.</span></p> <p class="SubStepAlpha"><span lang="FR">b.<span>&nbsp;&nbsp;</span></span><span lang="FR">Double-cliquez sur l'icone <b>Terminal</b> pour ouvrir un terminal.</span></p> <h2><span lang="FR">Partie&nbsp;2&nbsp;: </span><span lang="FR">Générer et afficher une clé privée.</span></h2> <p class="SubStepAlpha"><span lang="FR">a.<span>&nbsp;&nbsp;</span></span><span lang="FR">Pour générer une clé privée, utilisez la commande <b>openssl genpkey</b>. La commande génère une clé privée à l'aide de l'algorithme RSA et la génère dans un fichier nommé </span><b><span lang="FR">private_key.pem</span></b><span lang="FR">.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>openssl genpkey -algorithm RSA -out private_key.pem</b></span></p> <p class="CMDOutput"><span lang="FR">........................+++++</span></p> <p class="CMDOutput"><span lang="FR">...+++++</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ &nbsp;</span></p> <p class="SubStepAlpha"><span lang="FR">b.<span>&nbsp;&nbsp;</span></span><span lang="FR">Utilisez la commande <b>cat</b> pour afficher le fichier <b>private_key.pem</b>.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>cat private_key.pem</b></span></p> <p class="CMDOutput"><span lang="FR">-----BEGIN PRIVATE KEY-----</span></p> <p class="CMDOutput"><span lang="FR">MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC1db50XOYeDTAy</span></p> <p class="CMDOutput"><span lang="FR">GnQLRwGusr7us0Mi44hfFUmai3QHzelqRBxO06ujv9fFwQ8e5QsaQWbph+RVTQBu</span></p> <p class="CMDOutput"><span lang="FR">&lt;output omitted&gt;</span></p> <p class="CMDOutput"><span lang="FR">R7TLUOrewnIlkMuVLk8II2EQAXTMmvvZOICCiTSvm8gflx/FRJmUEiTf0I0MVUai</span></p> <p class="CMDOutput"><span lang="FR">X6O9rDJOjnoHBbi67+fgN0sn</span></p> <p class="CMDOutput"><span lang="FR">-----END PRIVATE KEY-----</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$</span></p> <h2><span lang="FR">Partie&nbsp;3&nbsp;: </span><span lang="FR">Générer et afficher une clé publique.</span></h2> <p class="SubStepAlpha"><span lang="FR">a.<span>&nbsp;&nbsp;</span></span><span lang="FR">Pour générer une clé publique, utilisez la commande<b> openssl pkey</b>. La commande prend votre <b>private_key.pem</b> en entrée, puis génère une clé publique (<b>-pubout -out</b>) dans un fichier appelé <b>public_key.pem</b>.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>openssl pkey -in private_key.pem -pubout -out public_key.pem</b></span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ </span></p> <p class="SubStepAlpha"><span lang="FR">b.<span>&nbsp;&nbsp;</span></span><span lang="FR">Utilisez la commande <b>cat</b> pour afficher le fichier<b> public_key.pem</b>.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>cat public_key.pem</b></span></p> <p class="CMDOutput"><span lang="FR">-----BEGIN PUBLIC KEY-----</span></p> <p class="CMDOutput"><span lang="FR">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtXW+dFzmHg0wMhp0C0cB</span></p> <p class="CMDOutput"><span lang="FR">rrK+7rNDIuOIXxVJmot0B83pakQcTtOro7/XxcEPHuULGkFm6YfkVU0Abq/1ccub</span></p> <p class="CMDOutput"><span lang="FR">SFZFb1kKobMutMhxvfBQjQr3jo1j6aG12yMvrQudvSlaxHTvuDpMlhPY3IrBjkMz</span></p> <p class="CMDOutput"><span lang="FR">2Lx0SjjOC9uD3CzaMwu6JWnhRt0svH7n6cZNXDfIlsYpcjLg9JqKrWEO3Ooq05q1</span></p> <p class="CMDOutput"><span lang="FR">e2JEAuDOXte+M2O0ZC7cjSyxCiOfD2IEXkBq41H7xgIKTq2WJ8f+/RXEdC5Mx6Xx</span></p> <p class="CMDOutput"><span lang="FR">fu7pQXN9gT9LbUPlLJfUG7vTCs2d2AA6TBUyUuzH2mS61KwWcT8VRAWtWdr/sPSK</span></p> <p class="CMDOutput"><span lang="FR">AQIDAQAB</span></p> <p class="CMDOutput"><span lang="FR">-----END PUBLIC KEY-----</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$</span></p> <h2><span lang="FR">Partie&nbsp;4&nbsp;: </span><span lang="FR">Créez un nouveau document qui sera signé numériquement.</span></h2> <p class="SubStepAlpha"><span lang="FR">a.<span>&nbsp;&nbsp;</span></span><span lang="FR">Utilisez la commande<b> echo</b> pour créer un fichier texte nommé <b>contract.txt</b>.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>echo Please transfer 2,000,000 US Dollars to Mr. Jester by 6pm today! &gt; contract.txt</b></span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ &nbsp;</span></p> <p class="SubStepAlpha"><span lang="FR">b.<span>&nbsp;&nbsp;</span></span><span lang="FR">Utilisez la commande <b>cat</b> pour afficher le fichier<b> contract.txt</b>.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>cat contract.txt</b></span></p> <p class="CMDOutput"><span lang="FR">Please transfer 2,000,000 US Dollars to Mr. Jester by 6pm today!</span></p> <h2><span lang="FR">Partie&nbsp;5&nbsp;: </span><span lang="FR">Utilisez la clé privée pour signer numériquement le nouveau document.</span></h2> <p class="SubStepAlpha"><span lang="FR">a.<span>&nbsp;&nbsp;</span></span><span lang="FR">Pour signer le document, utilisez la commande<b> openssl dgst</b>. La commande<b> dgst</b> peut prendre un nombre illimité de valeurs de résumé de message. Dans cet exemple, vous allez utiliser SHA&nbsp;256, puis <b>private_key.pem</b> pour générer une <b>signature</b> pour le document<b> contract.txt</b>.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>openssl dgst -sha256 -sign private_key.pem -out signature contract.txt</b></span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ &nbsp;</span></p> <p class="SubStepAlpha"><span lang="FR">b.<span>&nbsp;&nbsp;</span></span><span lang="FR">Utilisez la commande <b>cat</b> pour visualiser le fichier de<b> signature</b>. Le fichier est un fichier binaire. Appuyez sur<b> Enter </b>(Entrée) pour obtenir une nouvelle ligne de commande.</span></p><p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>cat signature</b></span></p><p class="CMDOutput">H<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>&amp;/J<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>c<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>M<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>$R<span style="font-family: &quot;Tahoma&quot;,sans-serif">�</span>xpA<span style="font-family:&quot;Tahoma&quot;,sans-serif">��</span>*t<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>&gt;<span style="font-family: &quot;Tahoma&quot;,sans-serif">�</span>ѣmr<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jw<span style="font-family:&quot;Tahoma&quot;,sans-serif">��</span>q]t'<span style="font-family: &quot;Tahoma&quot;,sans-serif">�</span>#ot'%_B<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>X<span style="font-family:&quot;Tahoma&quot;,sans-serif">���</span>~<span style="font-family: &quot;Tahoma&quot;,sans-serif">�</span>k<span style="font-family:&quot;Tahoma&quot;,sans-serif">��</span>p3<span style="font-family:&quot;Tahoma&quot;,sans-serif">����</span>-<span style="font-family: &quot;Tahoma&quot;,sans-serif">���</span></p> <p class="CMDOutput">&lt;output omitted&gt;</p> <p class="CMDOutput">ROˤ&nbsp;&nbsp;&nbsp; <span style="font-family:&quot;Tahoma&quot;,sans-serif">��</span>D?Nz<span style="font-family:&quot;Tahoma&quot;,sans-serif">�����</span>f<span style="font-family: &quot;Tahoma&quot;,sans-serif">�</span>&lt;<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>H<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>~<span style="font-family:&quot;Tahoma&quot;,sans-serif">�</span>P5nJ<span style="font-family:&quot;Tahoma&quot;,sans-serif">���</span>hqG<span style="font-family: &quot;Tahoma&quot;,sans-serif">�</span>&amp;28Jcisco@labvm:~$ </p><h2><span lang="FR">Partie&nbsp;6&nbsp;: </span><span lang="FR">Vérifier l'authenticité et l'intégrité du document.</span></h2> <p class="BodyTextL25"><span lang="FR">La technologie de signature numérique permet au destinataire de vérifier l'authenticité et l'intégrité du fichier. Le processus de vérification de la signature numérique consiste à s'assurer qu'un message donné a été signé par la clé privée qui correspond à une clé publique donnée. </span></p> <p class="BodyTextL25"><span lang="FR">Pour vérifier que le document est authentique et qu'il n'a pas été falsifié, utilisez la commande <b>openssl dgst</b> avec l'option de <b>verify </b>(vérification) et le fichier<b> public_key.pem</b>.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>openssl dgst -sha256 -verify public_key.pem -signature signature</b> <b>contract.txt</b></span></p> <p class="CMDOutput"><span lang="FR">Verified OK </span></p> <h2><span lang="FR">Partie&nbsp;7&nbsp;: </span><span lang="FR">Simulez un hacker qui change le destinataire spécifié dans le fichier contract.txt. </span></h2> <p class="SubStepAlpha"><span lang="FR">a.<span>&nbsp;&nbsp;</span></span><span lang="FR">Utilisez <b>gedit</b> pour ouvrir le fichier<b> contract.txt</b>.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>gedit contract.txt</b></span></p> <p class="SubStepAlpha"><span lang="FR">b.<span>&nbsp;&nbsp;</span></span><span lang="FR">Remplacez <b>Mr. Jester</b> par <b>Mr. Viper</b>.</span></p> <p class="SubStepAlpha"><span lang="FR">c.<span>&nbsp;&nbsp;</span></span><span lang="FR">Cliquez sur<b> File </b>(Fichier) &gt; <b>Quit </b>(Quitter), puis sur <b>Save </b>(Enregistrer) dans la boîte de dialogue.</span></p> <h2><span lang="FR">Partie&nbsp;8&nbsp;: </span><span lang="FR">Vérifiez que l'intégrité du document a été compromise.</span></h2> <p class="BodyTextL25"><span lang="FR">Réutiliser la commande <b>openssl dgst</b> avec l'option <b>verify</b> pour valider que la vérification du document échoue maintenant.</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$ <b>openssl dgst -sha256 -verify public_key.pem -signature signature contract.txt</b></span></p> <p class="CMDOutput"><span lang="FR">Verification Failure</span></p> <p class="CMDOutput"><span lang="FR">cisco@labvm:~$</span></p></div>
+                      </div>
+                    </div>
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!----><!---->
+                                    <block-view modelid="3bd5918f-abe0-4595-af82-421e5e0261d5" style="width: 50%;" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme" sgpulse-type="block"><!---->
+                
+                <div data-socialgoodpulse-id="3bd5918f-abe0-4595-af82-421e5e0261d5" class="3bd5918f-abe0-4595-af82-421e5e0261d5 block  is-complete">
+                    <div class="block__inner">    
+                    <base-view type="block" modelid="3bd5918f-abe0-4595-af82-421e5e0261d5" model="[object Object]" customclass="" lowercase_component="" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="block__header-wrapper  ">
+        <div class="block__header ">
+              <div class="block__header-inner ">
+                  
+                    <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                        <div class="component__container">                            
+                                <!--?lit$456750276$--><!----><text-view modelid="d27df868-32c6-401e-876f-6245debd1db6" class="is-full" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme" sgpulse-type="component"><!---->
+        <div class="text-inner component__inner">
+            <div class="component__header-container">
+                <div data-socialgoodpulse-id="d27df868-32c6-401e-876f-6245debd1db6" class="component text d27df868-32c6-401e-876f-6245debd1db6  is-full is-complete  ">
+                    <base-view type="component" lowercase_component="text" model="[object Object]" customclass="" is-touch="false" fullscreen="true" device="large" browser="Firefox" os="windows" dir="ltr" location="page" theme="light" orientation="landscape" themetype="article-base-theme"><!---->
+      <div class="component__header-wrapper  ">
+        <div class="component__header text__header">
+              <div class="component__header-inner text__header-inner">
+                  
+                    <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$--> <div class="component__content">
+                      <div tabindex="0" class="component__body text__body">
+                        <div class="component__body-inner text__body-inner"><!--?lit$456750276$--><span><br><hr><span style=" padding-right: 5px; float: left; font-family: arial; font-size: 12px; ">© 2017 - 2022 Cisco and/or its affiliates. All rights reserved. Cisco Public</span><br></span></div>
+                      </div>
+                    </div>
+                  <!--?lit$456750276$-->
+                  <!--?lit$456750276$-->
+              </div>
+          </div>
+        </div>
+      
+    </base-view>
+                </div>
+            </div>
+        </div>
+
+        <!-- div><div class="component__inner"></div></div -->
+        </text-view><!---->
+                            </div>                     
+                    </div>
+                </div>
+            </block-view>
+                                <!---->
+                            </div>
+                        </div>
+                        <!--?lit$456750276$-->
+                    </div>
+                </div>
+            </div>
+        <script></script>
+<script>
+    window.addEventListener("load", function () {
+      console.log("loaded");
+      document?.querySelectorAll(".answergray").forEach(function (ele) {
+        ele.classList.add("u-display-none");
+      });
+      document?.querySelectorAll(".hide-answer").forEach(function (ele) {
+        ele.classList.add("u-display-none");
+      });
+      document?.querySelectorAll(".show-answer").forEach(function (ele) {
+        ele.addEventListener("click", function (e) {
+          e.currentTarget.nextElementSibling.classList.remove("u-display-none");
+          e.currentTarget
+            .closest(".question-container")
+            ?.querySelectorAll(".answergray")
+            .forEach(function (ele) {
+              ele.classList.remove("u-display-none");
+            });
+          ele.classList.add("u-display-none");
+        });
+      });
+      document?.querySelectorAll(".hide-answer").forEach(function (ele) {
+        ele.addEventListener("click", function (e) {
+          e.currentTarget.previousElementSibling.classList.remove("u-display-none");
+          e.currentTarget
+            .closest(".question-container")
+            ?.querySelectorAll(".answergray")
+            .forEach(function (ele) {
+              ele.classList.add("u-display-none");
+            });
+          ele.classList.add("u-display-none");
+        });
+      });
+      let event = new Event("click", {
+        bubbles: true,
+        cancelable: true,
+      });
+      document
+        ?.querySelectorAll(".openTextBoxController__showButton")
+        .forEach(function (ele) {
+          ele.addEventListener("click", function (e) {
+            e.currentTarget.nextElementSibling.classList.remove("u-display-none");
+            ele.classList.add("u-display-none");
+            document?.querySelectorAll(".show-answer").forEach(function (ele) {
+              ele?.dispatchEvent(event);
+            });
+          });
+        });
+
+      document
+        ?.querySelectorAll(".openTextBoxController__hideButton")
+        .forEach(function (ele) {
+          ele.addEventListener("click", function (e) {
+            e.currentTarget.previousElementSibling.classList.remove("u-display-none");
+            ele.classList.add("u-display-none");
+            document?.querySelectorAll(".hide-answer").forEach(function (ele) {
+              ele?.dispatchEvent(event);
+            });
+          });
+        });
+
+      document
+        ?.querySelectorAll(".openTextBoxController__resetButton")
+        .forEach(function (ele) {
+          ele.addEventListener("click", function (e) {
+            document?.querySelectorAll("textArea").forEach(function (ele) {
+              ele.value = "";
+            });
+          });
+        });
+
+      document
+      ?.querySelectorAll('textarea')
+      .forEach(function (ele){
+        ele.defaultValue = ele.defaultValue.replace(/<!--.*?-->/g, '');
+      })
+        let checkButtonLabel = "check_button_label_placeHolder";
+        let hideButtonLabel = "hide_button_label_placeHolder";
+        document?.querySelectorAll(".check__button").forEach(function (ele) {
+        let answerBox = document.querySelector(".check__solution")
+        if (!answerBox.classList.contains("check__hidden")) {
+          answerBox.classList.add("check__hidden");
+          ele.innerText = checkButtonLabel;
+        }
+          ele.addEventListener("click", function (e) {
+            if (answerBox.classList.contains("check__hidden")) {
+              answerBox.classList.remove("check__hidden")
+              ele.innerText = hideButtonLabel;
+            } else {
+              answerBox.classList.add("check__hidden")
+              ele.innerText = checkButtonLabel;
+            }
+          })
+        })
+    });
+  </script>
+  </body></html>
